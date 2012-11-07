@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript" src="d3.js"></script>
+	<script>
+		function draw(data) {
+			"use strict";
+
+			var margin=40,
+				width=700-margin,
+				height=300-margin;
+
+			d3.select("body")
+			  .append("svg")
+			  	.attr("width", width+margin)
+			  	.attr("height", height+margin)
+			  .append(g)
+			  	.attr("class","chart")
+			  	
+			d3.select("svg")
+			  .selectAll("circle.times_square")
+			  	.data(data.times_square)
+			  	.enter()
+			  	.append("circle")
+			  		.attr("class", "times_square");
+
+			d3.select("svg")
+			  .selectAll("circle.grand_central")
+			  	.data(data.times_square)
+			  	.enter()
+			  	.append("circle")
+			  		.attr("class", "grand_central");			
+			  	
+		}
+	</script>
+</head>
+<body>
+	<script>
+		d3.json('data/....json', draw);
+	</script>
+</body>
+</html>
