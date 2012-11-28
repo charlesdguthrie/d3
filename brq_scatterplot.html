@@ -26,10 +26,9 @@
 			stroke:black;
 		}
 		circle{
-			stroke:black;
 			stroke-width:0.5px;
 			fill:RoyalBlue;
-			opacity:0.6;
+			opacity:0.4;
 		}
 	</style>
 	<script>
@@ -42,11 +41,11 @@
 			height = 300;
 
 		// Get domain of possible input data values, and match it to range of possible pixel locations
-		var x_extent=d3.extent(data, function(d){return d.collision_with_injury});
+		var x_extent=d3.extent(data, function(d){return d.num_browsers});
 		var x_scale = d3.scale.linear()
 			.range([margin,width-margin])
 			.domain(x_extent);
-		var y_extent=d3.extent(data, function(d){return d.dist_between_fail});
+		var y_extent=d3.extent(data, function(d){return d.distinct_brq});
 		var y_scale = d3.scale.linear()
 			.range([height-margin,margin])
 			.domain(y_extent);
@@ -67,12 +66,12 @@
 
 		// Place circles according to the data
 		d3.selectAll("circle")
-			.attr("cx", function(d){return x_scale(d.collision_with_injury)})
-			.attr("cy",function(d){return y_scale(d.dist_between_fail)});
+			.attr("cx", function(d){return x_scale(d.num_browsers)})
+			.attr("cy",function(d){return y_scale(d.distinct_brq)});
 
 		// Set circle radius
 		d3.selectAll("circle")
-			.attr("r", 5);
+			.attr("r", 2);
 
 		//Add mouseover labels to circles
 		d3.selectAll("circle")
@@ -80,20 +79,20 @@
 				d3.select(this)
 					.transition()
 					.duration(50)
-					.attr("r",7);
+					.attr("r",4);
 				d3.select('text.label').remove();
 				d3.select("svg")
 					.append('text')
-					.text(d.dist_between_fail + ' miles')
+					.text(d.distinct_brq)
 					.attr('class','label')
-					.attr('x', x_scale(d.collision_with_injury) + 10)
-					.attr('y', y_scale(d.dist_between_fail) - 10)
+					.attr('x', x_scale(d.num_browsers) + 10)
+					.attr('y', y_scale(d.distinct_brq) - 10)
 					.style('color','red');
 			})
 			.on('mouseout', function(d){
 				d3.select(this)
 					.transition()
-					.attr("r",5);
+					.attr("r",2);
 				d3.select('text.label')
 					.transition()
 					.style('opacity',0)
@@ -114,7 +113,7 @@
 			.call(y_axis);
 
 		//Axis titles
-		var x_title="collisions with injury (per million miles)"
+		var x_title="number of browsers"
 		d3.select(".x.axis")
 			.append("text")
 				.text(x_title)
@@ -122,7 +121,7 @@
 				.attr("y", margin / 1.5);
 		d3.select(".y.axis")
 			.append("text")
-				.text("mean distance between failure (miles)")
+				.text("distinct bid requests")
 				.attr("transform", "rotate (-90, -43, 0) translate(-280)");
 	}
 	</script>
@@ -130,7 +129,7 @@
 <body>
 	<h1>Bus Performance</h1>
 	<script>
-		d3.json('data/bus_perf.json', draw);
+		d3.json('data/brq2.json', draw);
 	</script>
 </body>
 </html>
