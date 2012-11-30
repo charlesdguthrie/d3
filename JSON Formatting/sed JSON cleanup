@@ -1,0 +1,24 @@
+sed JSON cleanup
+cp brq2.json brq.json
+cat brq.json | 
+	sed 's/"V[1-9]/~/g' | 
+	sed 's/~[0-9]/~/g' | 
+	sed 's/~[0-9]/~/g' | 
+	sed 's/~[0-9]/~/g' |
+	sed 's/~"://g' |
+	sed 's/{{/[{/g' |
+	sed 's/}}/}]/g' > brq2.json
+
+
+
+> brq2.json
+cp brq2.json brq.json
+cat brq.json | sed 's/~[0-9]/~/g' > brq2.json
+cp brq2.json brq.json
+cat brq.json | sed 's/~[0-9]/~/g' > brq2.json
+cp brq2.json brq.json
+cat brq.json | sed 's/~[0-9]/~/g' > brq2.json
+cp brq2.json brq.json
+cat brq.json | sed 's/~"://g' > brq2.json
+cp brq2.json brq.json
+

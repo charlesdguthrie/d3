@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!-- saved from url=(0079)http://alignedleft.com/content/3.tutorials/10.d3/40.adding-elements/demo/1.html -->
+<html lang="en">
+	<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>SVG Primer</title>
+		<script type="text/javascript" src="./D3 Test_files/d3.v2.js"></script>
+		<style>
+			
+		</style>
+	</head>
+	<body>		
+		<script type="text/javascript">
+			var dataset = [ 5, 10, 15, 20, 25, 14, 4, 5, 10, 14, 19 ];
+			
+			var h = 100,
+				w = 500,
+				barPad = 1,
+				barWidth=w/dataset.length - barPad;
+			
+			//Create SVG element
+			var svg=d3.select("body")
+				.append("svg")
+					.attr("height", h)
+					.attr("width", w);
+			
+			svg.selectAll("rect")
+				.data(dataset)
+				.enter()
+				.append("rect")
+				.attr("x",function(d,i) {
+					return i * (w/dataset.length); //Bar width of 20 plus 1 for padding
+				})
+				.attr("y",function(d) {return h-d*4;})
+				.attr("width",barWidth)
+				.attr("height",function(d) {return d*4;})
+				.attr("fill", function(d){
+					return "rgb(0,0,"+ (d*10) + ")";
+				})
+				
+			svg.selectAll("text")
+				.data(dataset)
+				.enter()
+				.append("text")
+				.text(function(d) {return d;})
+				.attr("x", function(d, i) {
+						return i*(w/dataset.length)+barWidth/2;
+				})
+				.attr("y", function(d) {
+					return h -d*4 + 14
+				})
+				.attr("font-family", "sans-serif")
+				.attr("font-size", "11px")
+				.attr("fill", "white")
+				.attr("text-anchor", "middle")
+			
+		</script>
+	
+</body>
+</html>

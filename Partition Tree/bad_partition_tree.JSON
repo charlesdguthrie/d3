@@ -1,0 +1,7 @@
+{"name":"charlie", "children":
+	[
+	{"name":"v2012.11.05","children":"Spend"},
+	{"name":"v2012.11.06","children":["PaceCredit","Spend"]},
+	{"name":"v2012.11.07","children":["PaceCredit","Spend"]},{"name":"v2012.11.08","children":["PaceCredit","Spend"]},{"name":"v2012.11.09","children":"PaceCredit"},{"name":"v2012.11.13","children":"Spend"},{"name":"v2012.11.14","children":["PaceCredit","Spend"]},{"name":"v2012.11.15","children":["BidProfileMarketerAudience","CampaignExt","PaceCredit","Spend"]},{"name":"v2012.11.27","children":"PaceCredit"}
+	]
+}

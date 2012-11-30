@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!-- saved from url=(0079)http://alignedleft.com/content/3.tutorials/10.d3/40.adding-elements/demo/1.html -->
+<html lang="en">
+	<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>D3 Test</title>
+		<script type="text/javascript" src="./D3 Test_files/d3.v2.js"></script>
+		<style>
+			div.bar {
+				display: inline-block;
+				width: 20px;
+				height: 100px; /* Gets overridden */
+				margin-right: 2px;
+				background-color: teal;
+			}
+			
+		</style>
+	</head>
+	<body>		
+		<script type="text/javascript">
+			var dataset = [ 5, 10, 15, 20, 25, 14, 4 ];
+			
+			d3.select("body").selectAll("div")
+				.data(dataset)
+				.enter()
+				.append("div")
+					.attr("class","bar")
+					.style("height",function(d){
+						barheight=d*5
+						return barheight+"px"
+					});
+		</script>
+	
+</body>
+</html>

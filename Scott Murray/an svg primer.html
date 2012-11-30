@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!-- saved from url=(0079)http://alignedleft.com/content/3.tutorials/10.d3/40.adding-elements/demo/1.html -->
+<html lang="en">
+	<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>SVG Primer</title>
+		<script type="text/javascript" src="./D3 Test_files/d3.v2.js"></script>
+		<style>
+			
+		</style>
+	</head>
+	<body>		
+		<script type="text/javascript">
+			var dataset = [ 50, 10, 15, 200, 250, 14, 4 ];
+			
+			var height = 400,
+				width = 600,
+				margin = 40;
+			
+			d3.select("body")
+				.append("svg")
+					.attr("height", height)
+					.attr("width", width)
+				.selectAll("circle")
+				.data(dataset)
+				.enter()
+				.append("circle")
+			
+			d3.selectAll("circle")
+				.attr("cx",function(d){return d+"px"})
+				.attr("cy",function(d){return d+"px"})
+				.attr("r","9px");
+		</script>
+	
+</body>
+</html>
