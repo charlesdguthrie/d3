@@ -25,6 +25,13 @@ rect.parent {
   fill: steelblue;
 }
 
+rect.Spend {
+  fill: green;
+}
+rect.PaceCredit {
+  fill: red;
+}
+
 text {
   pointer-events: none;
 }
@@ -34,7 +41,7 @@ text {
   <body>
     <div id="body">
       <div id="footer">
-        d3.layout.partition
+        Change Log for AT&T
         <div class="hint">click or option-click to descend or ascend</div>
       </div>
     </div>
@@ -43,7 +50,9 @@ text {
 var w = 1120,
     h = 600,
     x = d3.scale.linear().range([0, w]),
-    y = d3.scale.linear().range([0, h]);
+    y = d3.scale.linear().range([0, h]),
+    col = d3.scale.category10()
+      .domain("Spend","PaceCredit","BidProfileMarketerAudience","CampaignExt");
 
 var vis = d3.select("#body").append("div")
     .attr("class", "chart")
@@ -55,22 +64,37 @@ var vis = d3.select("#body").append("div")
 
 var partition = d3.layout.partition()
     .value(function(d) { return d.size; });
+    
+partition.sort(d3.ascending)
 
 d3.json("partition_tree.json", function(root) {
   var g = vis.selectAll("g")
       .data(partition.nodes(root))
-    .enter().append("svg:g")
+      .enter()
+      .append("svg:g")
       .attr("transform", function(d) { return "translate(" + x(d.y) + "," + y(d.x) + ")"; })
       .on("click", click);
 
   var kx = w / root.dx,
       ky = h / 1;
+      
 
+      
+      
   g.append("svg:rect")
       .attr("width", root.dy * kx)
       .attr("height", function(d) { return d.dx * ky; })
-      .attr("class", function(d) { return d.children ? "parent" : "child"; });
+      .attr("class", function(d) {
+          if(d.name=="Spend") {return d.name;}
+        ;})
+      /*.attr("class", function(d){
+          if(d.parent.empty()) {return "parent";}
+          else if(d.parent.class=="Spend") {return d.parent.class;}
+        ;})*/
+      .classed("parent", function(d) { return d.children ? true : false; });
+;
 
+  console.log(d.parent.empty());
   g.append("svg:text")
       .attr("transform", transform)
       .attr("dy", ".35em")

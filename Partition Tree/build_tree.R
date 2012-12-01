@@ -15,36 +15,41 @@ hit_date.list=list()
 for(i in 1:length(hit_dates))
 {
 	#Create entity.list
-	entities=as.character(unique(u$entity[u$hit_date==hit_dates[i] ]))
+	u.hit_date=u[u$hit_date==hit_dates[i],]
+	entities=as.character(unique(u.hit_date$entity))
 	entity.list=list()
 	for(j in 1:length(entities))
 	{
 		#Create spend_descr.list
-		spend_descrs=as.character(unique(u$spend_descr[u$entity==entities[j] ]))
+		u.entity=u.hit_date[u.hit_date$entity==entities[j],]
+		spend_descrs=as.character(unique(u.entity$spend_descr))
 		spend_descr.list=list()
 		
-		#Reducing load for testing
-		#for(k in 1:length(spend_descrs)){
-		for(k in 1:3)
+		#REDUCING LOAD FOR TESTING
+		for(k in 1:length(spend_descrs))
 		{
 			#Create field.list
-			fields=as.character(unique(u$field[u$spend_descr==spend_descrs[k] ]))
+			u.spend_descr=u.entity[u.entity$spend_descr==spend_descrs[k],]
+			fields=as.character(unique(u.spend_descr$field))
 			field.list=list()
 			for(l in 1:length(fields))
 			{
 				#Create old_new.list
-				old_news=as.character(unique(u$old_new[u$field==fields[l] ]))
+				u.field=u.spend_descr[u.spend_descr$field==fields[l],]
+				old_news=as.character(unique(u.field$old_new))
 				old_new.list=list()
 				for(m in 1:length(old_news))
 				{
+					
+					#REDUCING LOAD FOR TESTING
 					#Create freq.list
-					freqs=u$freq[u$old_new==old_news[m] ]
-					freq.list=list()
-					for(n in 1:length(freqs))
-					{
-						freq.list[[n]]=list(name=freqs[n], size=freqs[n])
-					}
-					old_new.list[[m]]=list(name=old_news[m], children=freq.list)
+					freqs=u.field$freq[u.field$old_new==old_news[m]]
+					#freq.list=list()
+					#for(n in 1:length(freqs))
+					#{
+					#	freq.list[[n]]=list(name=freqs[n], size=freqs[n])
+					#}
+					old_new.list[[m]]=list(name=old_news[m], size=sum(freqs))
 				}	
 				field.list[[l]]=list(name=fields[l], children=old_new.list)
 			}
@@ -56,7 +61,7 @@ for(i in 1:length(hit_dates))
 }
 wrapper=list(name="log",children=hit_date.list)
 json<-toJSON(wrapper)
-write(json, file="~/Documents/Git/Partition Tree/partition_tree.JSON")
+write(json, file="~/Documents/git/d3/Partition Tree/partition_tree.JSON")
 
 list_items=function(dat,column,i){
 	if(column==ncol(dat)){

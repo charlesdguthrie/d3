@@ -25,6 +25,10 @@ rect.parent {
   fill: steelblue;
 }
 
+rect.spend {
+  fill: green;
+}
+
 text {
   pointer-events: none;
 }
@@ -34,7 +38,7 @@ text {
   <body>
     <div id="body">
       <div id="footer">
-        d3.layout.partition
+        Change Log for AT&T
         <div class="hint">click or option-click to descend or ascend</div>
       </div>
     </div>
@@ -55,11 +59,14 @@ var vis = d3.select("#body").append("div")
 
 var partition = d3.layout.partition()
     .value(function(d) { return d.size; });
+    
+partition.sort(d3.ascending)
 
 d3.json("partition_tree.json", function(root) {
   var g = vis.selectAll("g")
       .data(partition.nodes(root))
-    .enter().append("svg:g")
+      .enter()
+      .append("svg:g")
       .attr("transform", function(d) { return "translate(" + x(d.y) + "," + y(d.x) + ")"; })
       .on("click", click);
 
@@ -69,7 +76,11 @@ d3.json("partition_tree.json", function(root) {
   g.append("svg:rect")
       .attr("width", root.dy * kx)
       .attr("height", function(d) { return d.dx * ky; })
-      .attr("class", function(d) { return d.children ? "parent" : "child"; });
+      .attr("class", function(d) { return d.children ? "parent" : "child"; })
+      .classed("spend", function(d)
+      {
+        if(d.name=="Spend") { return "true";}
+      });
 
   g.append("svg:text")
       .attr("transform", transform)
