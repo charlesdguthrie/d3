@@ -1,0 +1,141 @@
+2012-11-05	Spend	AT&TWired_2858L30MVA_NtvSpnd_Q212	status	Active->Inactive	2
+2012-11-05	Spend	AT&TWired_2858L30MVA_NtvSpnd_Q212	status	Inactive->Active	1
+2012-11-05	Spend	AT&TWired_2858L30MVB_NtvSpnd_Q212	status	Active->Inactive	3
+2012-11-05	Spend	AT&TWired_2858L30MVB_NtvSpnd_Q212	status	Inactive->Active	2
+2012-11-05	Spend	AT&TWired_2858L40AVGCL_D_NtvSpnd_Q212	status	Active->Inactive	2
+2012-11-05	Spend	AT&TWired_2858L40AVGCL_D_NtvSpnd_Q212	status	Inactive->Active	1
+2012-11-05	Spend	AT&TWired_2858L40AVGCL_E_NtvSpnd_Q212	status	Active->Inactive	1
+2012-11-05	Spend	AT&TWired_2858L40AVGCL_E_NtvSpnd_Q212	status	Inactive->Active	1
+2012-11-05	Spend	AT&TWired_2858L40AVGCL_F_NtvSpnd_Q212	status	Active->Inactive	1
+2012-11-05	Spend	AT&TWired_2858L40AVGCL_F_NtvSpnd_Q212	status	Inactive->Active	1
+2012-11-05	Spend	AT&TWired_2858L40AVGCL_G_NtvSpnd_Q212	status	Active->Inactive	2
+2012-11-05	Spend	AT&TWired_2858L40AVGCL_G_NtvSpnd_Q212	status	Inactive->Active	2
+2012-11-05	Spend	AT&TWired_2858L99LSB_NtvSpnd_Q212	status	Active->Inactive	2
+2012-11-05	Spend	AT&TWired_2858L99LSB_NtvSpnd_Q212	status	Inactive->Active	1
+2012-11-05	Spend	AT&TWired_2858L99LSC_NtvSpnd_Q212	status	Active->Inactive	3
+2012-11-05	Spend	AT&TWired_2858L99LSC_NtvSpnd_Q212	status	Inactive->Active	2
+2012-11-05	Spend	AT&TWired_2858L99LSD_NtvSpnd_Q212	status	Active->Inactive	1
+2012-11-06	PaceCredit	AT&TWired_2858L40AVGCL_B_NtvSpnd_Q212	pacingLimit	110000.0->75000.0	1
+2012-11-06	PaceCredit	AT&TWired_2858L40AVGCL_C_NtvSpnd_Q212	pacingLimit	110000.0->75000.0	1
+2012-11-06	PaceCredit	AT&TWired_2858L40AVGCL_D_NtvSpnd_Q212	pacingLimit	30000.0->10000.0	1
+2012-11-06	PaceCredit	AT&TWired_2858L40AVGCL_E_NtvSpnd_Q212	pacingLimit	110000.0->50000.0	1
+2012-11-06	PaceCredit	AT&TWired_2858L40AVGCL_F_NtvSpnd_Q212	pacingLimit	110000.0->30000.0	1
+2012-11-06	PaceCredit	AT&TWired_2858L40AVGCL_G_NtvSpnd_Q212	pacingLimit	150000.0->30000.0	1
+2012-11-06	PaceCredit	AT&TWired_2858L40LSA_NtvSpnd_Q212	pacingLimit	125000.0->100000.0	1
+2012-11-06	PaceCredit	AT&TWired_2858L40LSB_NtvSpnd_Q212	pacingLimit	125000.0->100000.0	1
+2012-11-06	PaceCredit	AT&TWired_2858L40LSC_NtvSpnd_Q212	pacingLimit	125000.0->100000.0	1
+2012-11-06	PaceCredit	AT&TWired_2858L40LSD_NtvSpnd_Q212	pacingLimit	125000.0->100000.0	1
+2012-11-06	PaceCredit	AT&TWired_2858L40LSE_NtvSpnd_Q212	pacingLimit	175000.0->100000.0	1
+2012-11-06	PaceCredit	AT&TWired_2858L40LSI_NtvSpnd_Q212	pacingLimit	50000.0->30000.0	1
+2012-11-06	Spend	AT&TWired_2858L40AVGCL_F_NtvSpnd_Q212	amount	1.87->1.52	1
+2012-11-06	Spend	AT&TWired_2858L40AVGCL_G_NtvSpnd_Q212	amount	1.87->1.52	1
+2012-11-06	Spend	AT&TWired_2858L40LSI_NtvSpnd_Q212	amount	2.07->1.52	1
+2012-11-07	PaceCredit	AT&TWired_2858L30AVGCL_B_NtvSpnd_Q212	pacingLimit	10000.0->20000.0	1
+2012-11-07	PaceCredit	AT&TWired_2858L30AVGCL_D_NtvSpnd_Q212	pacingLimit	60000.0->20000.0	1
+2012-11-07	PaceCredit	AT&TWired_2858L30AVGCL_E_NtvSpnd_Q212	pacingLimit	60000.0->20000.0	1
+2012-11-07	PaceCredit	AT&TWired_2858L30AVGCL_F_NtvSpnd_Q212	pacingLimit	60000.0->20000.0	1
+2012-11-07	PaceCredit	AT&TWired_2858L40AVGCL_D_NtvSpnd_Q212	pacingLimit	10000.0->20000.0	1
+2012-11-07	PaceCredit	AT&TWired_2858L40AVGCL_G_NtvSpnd_Q212	pacingLimit	30000.0->20000.0	1
+2012-11-07	PaceCredit	AT&TWired_2858L40LSF_NtvSpnd_Q212	pacingLimit	30000.0->20000.0	1
+2012-11-07	PaceCredit	AT&TWired_2858L40LSH_NtvSpnd_Q212	pacingLimit	30000.0->20000.0	1
+2012-11-07	PaceCredit	AT&TWired_2858L40LSI_NtvSpnd_Q212	pacingLimit	30000.0->20000.0	1
+2012-11-07	PaceCredit	AT&TWired_2858L40MVCombo_NtvSpnd_Q212	pacingLimit	25000.0->50000.0	1
+2012-11-07	PaceCredit	AT&TWired_ATM6_NtvSpnd_Q212	pacingLimit	300000.0->400000.0	1
+2012-11-07	Spend	AT&TWired_2858L30AVGCL_A_NtvSpnd_Q212	status	Active->Inactive	1
+2012-11-07	Spend	AT&TWired_2858L30AVGCL_A_NtvSpnd_Q212	status	Inactive->Active	1
+2012-11-07	Spend	AT&TWired_2858L30AVGCL_B_NtvSpnd_Q212	amount	1.53->1.57	1
+2012-11-07	Spend	AT&TWired_2858L30AVGCL_B_NtvSpnd_Q212	status	Active->Inactive	1
+2012-11-07	Spend	AT&TWired_2858L30AVGCL_B_NtvSpnd_Q212	status	Inactive->Active	2
+2012-11-07	Spend	AT&TWired_2858L30AVGCL_B_NtvSpnd_Q212	targetDelay	4,HOUR,<null>,<null>,<null>,<null>,true,<null>,<null>,OR,<null>->3,HOUR,<null>,<null>,<null>,<null>,true,<null>,<null>,OR,<null>	1
+2012-11-07	Spend	AT&TWired_2858L30AVGCL_C_NtvSpnd_Q212	status	Active->Inactive	1
+2012-11-07	Spend	AT&TWired_2858L30AVGCL_C_NtvSpnd_Q212	status	Inactive->Active	1
+2012-11-07	Spend	AT&TWired_2858L30AVGCL_D_NtvSpnd_Q212	amount	1.52->1.57	1
+2012-11-07	Spend	AT&TWired_2858L30AVGCL_D_NtvSpnd_Q212	status	Active->Inactive	2
+2012-11-07	Spend	AT&TWired_2858L30AVGCL_D_NtvSpnd_Q212	status	Inactive->Active	3
+2012-11-07	Spend	AT&TWired_2858L30AVGCL_D_NtvSpnd_Q212	targetDelay	4,HOUR,<null>,<null>,<null>,<null>,true,<null>,<null>,OR,<null>->3,HOUR,<null>,<null>,<null>,<null>,true,<null>,<null>,OR,<null>	1
+2012-11-07	Spend	AT&TWired_2858L30AVGCL_E_NtvSpnd_Q212	status	Active->Inactive	1
+2012-11-07	Spend	AT&TWired_2858L30AVGCL_E_NtvSpnd_Q212	status	Inactive->Active	2
+2012-11-07	Spend	AT&TWired_2858L30AVGCL_E_NtvSpnd_Q212	targetDelay	2,HOUR,<null>,<null>,<null>,<null>,true,<null>,<null>,OR,<null>->3,HOUR,<null>,<null>,<null>,<null>,true,<null>,<null>,OR,<null>	1
+2012-11-07	Spend	AT&TWired_2858L30AVGCL_F_NtvSpnd_Q212	status	Active->Inactive	1
+2012-11-07	Spend	AT&TWired_2858L30AVGCL_F_NtvSpnd_Q212	status	Inactive->Active	2
+2012-11-07	Spend	AT&TWired_2858L30AVGCL_F_NtvSpnd_Q212	targetDelay	2,HOUR,<null>,<null>,<null>,<null>,true,<null>,<null>,OR,<null>->3,HOUR,<null>,<null>,<null>,<null>,true,<null>,<null>,OR,<null>	1
+2012-11-07	Spend	AT&TWired_2858L40AVGCL_D_NtvSpnd_Q212	amount	1.63->1.57	1
+2012-11-07	Spend	AT&TWired_2858L40AVGCL_D_NtvSpnd_Q212	status	Active->Inactive	1
+2012-11-07	Spend	AT&TWired_2858L40AVGCL_D_NtvSpnd_Q212	status	Inactive->Active	2
+2012-11-07	Spend	AT&TWired_2858L40AVGCL_G_NtvSpnd_Q212	amount	1.52->1.53	1
+2012-11-07	Spend	AT&TWired_2858L40LSF_NtvSpnd_Q212	amount	2.07->1.53	1
+2012-11-07	Spend	AT&TWired_2858L40LSH_NtvSpnd_Q212	amount	2.07->1.53	1
+2012-11-07	Spend	AT&TWired_2858L40LSI_NtvSpnd_Q212	amount	1.52->1.53	1
+2012-11-07	Spend	AT&TWired_2858L40MVA_NtvSpnd_Q212	status	Active->Inactive	1
+2012-11-07	Spend	AT&TWired_2858L40MVB_NtvSpnd_Q212	status	Active->Inactive	1
+2012-11-07	Spend	AT&TWired_2858L40MVC_NtvSpnd_Q212	status	Active->Inactive	1
+2012-11-07	Spend	AT&TWired_2858L40MVCombo_NtvSpnd_Q212	amount	1.87->1.77	1
+2012-11-07	Spend	AT&TWired_2858L40MVCombo_NtvSpnd_Q212	status	Inactive->Active	1
+2012-11-07	Spend	AT&TWired_2858L40MVCombo_NtvSpnd_Q212	targetSegmentStr	{"v":2, "lE":"AND", "iLE":"OR", "iF":[{"id":7523, "descr":"2858L40MVA"}], "eLE":"OR", "eF":[{"id":802, "descr":"2399L30AT"},{"id":6569, "descr":"2858L30AT"},{"id":6570, "descr":"2858L40AT"}]}->{"v":2, "lE":"AND", "iLE":"OR", "iF":[{"id":7523, "descr":"2858L40MVA"},{"id":7524, "descr":"2858L40MVB"},{"id":7525, "descr":"2858L40MVC"},{"id":7526, "descr":"2858L40MVD"}], "eLE":"OR", "eF":[{"id":802, "descr":"2399L30AT"},{"id":6569, "descr":"2858L30AT"},{"id":6570, "descr":"2858L40AT"}]}	1
+2012-11-07	Spend	AT&TWired_2858L40MVD_NtvSpnd_Q212	status	Active->Inactive	1
+2012-11-08	PaceCredit	AT&TWired_2858L40LSG_NtvSpnd_Q212	pacingLimit	75000.0->50000.0	1
+2012-11-08	Spend	AT&TWired_2858L40LSG_NtvSpnd_Q212	amount	2.27->1.87	1
+2012-11-09	PaceCredit	AT&TWired_2858L30AT_NtvSpnd_Q212	pacingLimit	90000.0->75000.0	1
+2012-11-09	PaceCredit	AT&TWired_2858L40ATMVA_NtvSpnd_Q212	pacingLimit	30000.0->100000.0	1
+2012-11-09	PaceCredit	AT&TWired_2858L40ATMVC_NtvSpnd_Q212	pacingLimit	400000.0->500000.0	1
+2012-11-09	PaceCredit	AT&TWired_2858L40ATMVD_NtvSpnd_Q212	pacingLimit	25000.0->75000.0	1
+2012-11-09	PaceCredit	AT&TWired_2858L40AVGCL_B_NtvSpnd_Q212	pacingLimit	50000.0->30000.0	1
+2012-11-09	PaceCredit	AT&TWired_2858L40AVGCL_B_NtvSpnd_Q212	pacingLimit	75000.0->50000.0	1
+2012-11-09	PaceCredit	AT&TWired_2858L40AVGCL_C_NtvSpnd_Q212	pacingLimit	75000.0->50000.0	1
+2012-11-09	PaceCredit	AT&TWired_2858L40AVGCL_E_NtvSpnd_Q212	pacingLimit	50000.0->30000.0	1
+2012-11-09	PaceCredit	AT&TWired_2858L40LSE_NtvSpnd_Q212	pacingLimit	100000.0->30000.0	1
+2012-11-09	PaceCredit	AT&TWired_2858L40LSG_NtvSpnd_Q212	pacingLimit	50000.0->30000.0	1
+2012-11-09	PaceCredit	AT&TWired_2858L40LSJ_NtvSpnd_Q212	pacingLimit	50000.0->30000.0	1
+2012-11-09	PaceCredit	AT&TWired_2858L40MVCombo_NtvSpnd_Q212	pacingLimit	50000.0->30000.0	1
+2012-11-09	PaceCredit	AT&TWired_ATM6_NtvSpnd_Q212	pacingLimit	400000.0->500000.0	1
+2012-11-13	Spend	AT&TWired_2858L40ATMVB_NtvSpnd_Q212	targetDelay	7,MINUTE,<null>,<null>,<null>,<null>,true,<null>,<null>,OR,<null>->30,MINUTE,<null>,<null>,<null>,<null>,true,<null>,<null>,OR,<null>	1
+2012-11-13	Spend	AT&TWired_2858L40ATMVC_NtvSpnd_Q212	targetDelay	7,MINUTE,<null>,<null>,<null>,<null>,true,<null>,<null>,OR,<null>->30,MINUTE,<null>,<null>,<null>,<null>,true,<null>,<null>,OR,<null>	1
+2012-11-13	Spend	AT&TWired_2858L40ATMVD_NtvSpnd_Q212	targetDelay	1,HOUR,<null>,<null>,<null>,<null>,true,<null>,<null>,OR,<null>->30,MINUTE,<null>,<null>,<null>,<null>,true,<null>,<null>,OR,<null>	1
+2012-11-13	Spend	AT&TWired_2858L40AT_NtvSpnd_Q212	targetDelay	1,HOUR,<null>,<null>,<null>,<null>,true,<null>,<null>,OR,<null>->30,MINUTE,<null>,<null>,<null>,<null>,true,<null>,<null>,OR,<null>	1
+2012-11-14	PaceCredit	AT&TWired_2858L30AT_20min_NtvSpnd_Q212	pacingLimit	10000.0->25000.0	1
+2012-11-14	PaceCredit	AT&TWired_2858L30AVGCL_B_NtvSpnd_Q212	pacingLimit	20000.0->15000.0	1
+2012-11-14	PaceCredit	AT&TWired_2858L30AVGCL_D_NtvSpnd_Q212	pacingLimit	20000.0->15000.0	1
+2012-11-14	PaceCredit	AT&TWired_2858L30AVGCL_E_NtvSpnd_Q212	pacingLimit	20000.0->15000.0	1
+2012-11-14	PaceCredit	AT&TWired_2858L30AVGCL_F_NtvSpnd_Q212	pacingLimit	20000.0->15000.0	1
+2012-11-14	PaceCredit	AT&TWired_2858L40AVGCL_D_NtvSpnd_Q212	pacingLimit	20000.0->15000.0	1
+2012-11-14	PaceCredit	AT&TWired_2858L40AVGCL_E_NtvSpnd_Q212	pacingLimit	30000.0->15000.0	1
+2012-11-14	PaceCredit	AT&TWired_2858L40AVGCL_G_NtvSpnd_Q212	pacingLimit	20000.0->15000.0	1
+2012-11-14	PaceCredit	AT&TWired_2858L40LSD_NtvSpnd_Q212	pacingLimit	100000.0->30000.0	1
+2012-11-14	PaceCredit	AT&TWired_2858L40MVCombo_NtvSpnd_Q212	pacingLimit	30000.0->25000.0	1
+2012-11-14	Spend	AT&TWired_2858L30AT_20min_NtvSpnd_Q212	amount	11.56->10.0	1
+2012-11-14	Spend	AT&TWired_2858L30AT_20min_NtvSpnd_Q212	targetSegmentStr	{"v":2, "iF":[{"r":{"v":1, "tIM":20, "a":"INCLUDE"}, "id":6569, "descr":"2858L30AT"}], "iLE":"OR", "eF":[], "eLE":"OR", "lE":"AND"}->{"v":2,"iF":[{"r":{"v":1,"tIM":60,"a":"INCLUDE"},"id":6569,"descr":"2858L30AT"}],"iLE":"OR","eF":[],"eLE":"OR","lE":"AND"}	1
+2012-11-14	Spend	AT&TWired_2858L30AVGCL_B_NtvSpnd_Q212	amount	1.57->1.53	1
+2012-11-14	Spend	AT&TWired_2858L30AVGCL_D_NtvSpnd_Q212	amount	1.57->1.53	1
+2012-11-14	Spend	AT&TWired_2858L30AVGCL_E_NtvSpnd_Q212	amount	1.57->1.53	1
+2012-11-14	Spend	AT&TWired_2858L30AVGCL_F_NtvSpnd_Q212	amount	1.57->1.53	1
+2012-11-14	Spend	AT&TWired_2858L40AVGCL_D_NtvSpnd_Q212	amount	1.57->1.53	1
+2012-11-14	Spend	AT&TWired_2858L40AVGCL_E_NtvSpnd_Q212	amount	1.87->1.53	1
+2012-11-15	BidProfileMarketerAudience	16/20	status	Active->Inactive	1
+2012-11-15	BidProfileMarketerAudience	22/10	status	Active->Inactive	1
+2012-11-15	CampaignExt	AT&T Wired 2012	targetFrequencyRecency	24,1,DAY,<null>,<null>,<null>,<null>,true,<null>,<null>,OR,<null>->50,1,DAY,<null>,<null>,<null>,<null>,true,<null>,<null>,OR,<null>	1
+2012-11-15	PaceCredit	AT&TWired_2858L40AVGCL_A_NtvSpnd_Q212	pacingLimit	75000.0->50000.0	1
+2012-11-15	PaceCredit	AT&TWired_2858L40AVGCL_C_NtvSpnd_Q212	pacingLimit	50000.0->30000.0	1
+2012-11-15	PaceCredit	AT&TWired_2858L40LSE_NtvSpnd_Q212	pacingLimit	30000.0->50000.0	1
+2012-11-15	PaceCredit	AT&TWired_2858L40LSF_NtvSpnd_Q212	pacingLimit	20000.0->50000.0	1
+2012-11-15	Spend	AT&TWired_2858L30AT_20min_NtvSpnd_Q212	targetSegmentStr	{"v":2, "lE":"AND", "iLE":"OR", "iF":[{"id":6569, "descr":"2858L30AT"}], "eLE":"OR", "eF":[{"id":6570, "descr":"2858L40AT"}]}->{"v":2,"iF":[{"r":{"v":1,"tIM":60,"a":"INCLUDE"},"id":6569,"descr":"2858L30AT"}],"iLE":"OR","eF":[{"id":6570,"descr":"2858L40AT"}],"eLE":"OR","lE":"AND"}	1
+2012-11-15	Spend	AT&TWired_2858L30AT_20min_NtvSpnd_Q212	targetSegmentStr	{"v":2,"iF":[{"r":{"v":1,"tIM":60,"a":"INCLUDE"},"id":6569,"descr":"2858L30AT"}],"iLE":"OR","eF":[],"eLE":"OR","lE":"AND"}->{"v":2, "lE":"AND", "iLE":"OR", "iF":[{"id":6569, "descr":"2858L30AT"}], "eLE":"OR", "eF":[{"id":6570, "descr":"2858L40AT"}]}	1
+2012-11-15	Spend	AT&TWired_2858L30AT_NtvSpnd_Q212	targetSegmentStr	{"v":2, "lE":"AND", "iLE":"OR", "iF":[{"id":6569, "descr":"2858L30AT"}], "eLE":"OR", "eF":[{"id":3936, "descr":"2399L10NNImp"},{"id":6568, "descr":"2858L10NNImp"},{"id":24108, "descr":"2858L40ATMVA"},{"id":24109, "descr":"2858L40ATMVB"},{"id":24110, "descr":"2858L40ATMVC"},{"id":24111, "descr":"2858L40ATMVD"},{"id":24112, "descr":"2858L40ATMVE"}]}->{"v":2, "lE":"AND", "iLE":"OR", "iF":[{"id":6569, "descr":"2858L30AT"}], "eLE":"OR", "eF":[{"id":3936, "descr":"2399L10NNImp"},{"id":6568, "descr":"2858L10NNImp"},{"id":24108, "descr":"2858L40ATMVA"},{"id":24109, "descr":"2858L40ATMVB"},{"id":24110, "descr":"2858L40ATMVC"},{"id":24111, "descr":"2858L40ATMVD"},{"id":24112, "descr":"2858L40ATMVE"},{"id":6570, "descr":"2858L40AT"}]}	1
+2012-11-15	Spend	AT&TWired_2858L32AT_NtvSpnd_Q212	targetSegmentStr	{"v":2, "lE":"AND", "iLE":"OR", "iF":[{"id":6936, "descr":"2858L32AT"}], "eLE":"OR", "eF":[{"id":3936, "descr":"2399L10NNImp"},{"id":6568, "descr":"2858L10NNImp"},{"id":24108, "descr":"2858L40ATMVA"},{"id":24109, "descr":"2858L40ATMVB"},{"id":24110, "descr":"2858L40ATMVC"},{"id":24111, "descr":"2858L40ATMVD"},{"id":24112, "descr":"2858L40ATMVE"}]}->{"v":2, "lE":"AND", "iLE":"OR", "iF":[{"id":6936, "descr":"2858L32AT"}], "eLE":"OR", "eF":[{"id":3936, "descr":"2399L10NNImp"},{"id":6568, "descr":"2858L10NNImp"},{"id":24108, "descr":"2858L40ATMVA"},{"id":24109, "descr":"2858L40ATMVB"},{"id":24110, "descr":"2858L40ATMVC"},{"id":24111, "descr":"2858L40ATMVD"},{"id":24112, "descr":"2858L40ATMVE"},{"id":6570, "descr":"2858L40AT"}]}	1
+2012-11-15	Spend	AT&TWired_2858L40ATMVA_NtvSpnd_Q212	targetSegmentStr	{"v":2, "lE":"AND", "iLE":"OR", "iF":[{"id":24108, "descr":"2858L40ATMVA"}], "eLE":"OR", "eF":[{"id":3936, "descr":"2399L10NNImp"},{"id":6568, "descr":"2858L10NNImp"}]}->{"v":2, "lE":"AND", "iLE":"OR", "iF":[{"id":24108, "descr":"2858L40ATMVA"}], "eLE":"OR", "eF":[{"id":3936, "descr":"2399L10NNImp"},{"id":6568, "descr":"2858L10NNImp"},{"id":6570, "descr":"2858L40AT"}]}	1
+2012-11-15	Spend	AT&TWired_2858L40ATMVB_NtvSpnd_Q212	targetSegmentStr	{"v":2, "lE":"AND", "iLE":"OR", "iF":[{"id":24109, "descr":"2858L40ATMVB"}], "eLE":"OR", "eF":[{"id":3936, "descr":"2399L10NNImp"},{"id":6568, "descr":"2858L10NNImp"}]}->{"v":2, "lE":"AND", "iLE":"OR", "iF":[{"id":24109, "descr":"2858L40ATMVB"}], "eLE":"OR", "eF":[{"id":3936, "descr":"2399L10NNImp"},{"id":6568, "descr":"2858L10NNImp"},{"id":6570, "descr":"2858L40AT"}]}	1
+2012-11-15	Spend	AT&TWired_2858L40ATMVC_NtvSpnd_Q212	targetSegmentStr	{"v":2, "lE":"AND", "iLE":"OR", "iF":[{"id":24110, "descr":"2858L40ATMVC"}], "eLE":"OR", "eF":[{"id":3936, "descr":"2399L10NNImp"},{"id":6568, "descr":"2858L10NNImp"}]}->{"v":2, "lE":"AND", "iLE":"OR", "iF":[{"id":24110, "descr":"2858L40ATMVC"}], "eLE":"OR", "eF":[{"id":3936, "descr":"2399L10NNImp"},{"id":6568, "descr":"2858L10NNImp"},{"id":6570, "descr":"2858L40AT"}]}	1
+2012-11-15	Spend	AT&TWired_2858L40ATMVD_NtvSpnd_Q212	targetSegmentStr	{"v":2, "lE":"AND", "iLE":"OR", "iF":[{"id":24111, "descr":"2858L40ATMVD"}], "eLE":"OR", "eF":[{"id":3936, "descr":"2399L10NNImp"},{"id":6568, "descr":"2858L10NNImp"}]}->{"v":2, "lE":"AND", "iLE":"OR", "iF":[{"id":24111, "descr":"2858L40ATMVD"}], "eLE":"OR", "eF":[{"id":3936, "descr":"2399L10NNImp"},{"id":6568, "descr":"2858L10NNImp"},{"id":6570, "descr":"2858L40AT"}]}	1
+2012-11-15	Spend	AT&TWired_2858L40LSA_NtvSpnd_Q212	amount	2.57->3.57	1
+2012-11-15	Spend	AT&TWired_2858L40LSB_NtvSpnd_Q212	amount	2.57->3.57	1
+2012-11-15	Spend	AT&TWired_2858L40LSC_NtvSpnd_Q212	amount	2.57->3.57	1
+2012-11-15	Spend	AT&TWired_2858L40LSE_NtvSpnd_Q212	amount	2.27->3.57	1
+2012-11-15	Spend	AT&TWired_2858L40LSF_NtvSpnd_Q212	amount	1.53->3.57	1
+2012-11-15	Spend	AT&TWired_4246L300AT_NtvSpnd_Q312	targetSegmentStr	{"v":2, "lE":"AND", "iLE":"OR", "iF":[{"id":54131, "descr":"4246L300AT"}], "eLE":"OR", "eF":[{"id":3936, "descr":"2399L10NNImp"},{"id":6568, "descr":"2858L10NNImp"},{"id":53522, "descr":"4246L10NNImp"},{"id":24108, "descr":"2858L40ATMVA"},{"id":24109, "descr":"2858L40ATMVB"},{"id":24110, "descr":"2858L40ATMVC"},{"id":24111, "descr":"2858L40ATMVD"},{"id":24112, "descr":"2858L40ATMVE"}]}->{"v":2, "lE":"AND", "iLE":"OR", "iF":[{"id":54131, "descr":"4246L300AT"}], "eLE":"OR", "eF":[{"id":3936, "descr":"2399L10NNImp"},{"id":6568, "descr":"2858L10NNImp"},{"id":53522, "descr":"4246L10NNImp"},{"id":24108, "descr":"2858L40ATMVA"},{"id":24109, "descr":"2858L40ATMVB"},{"id":24110, "descr":"2858L40ATMVC"},{"id":24111, "descr":"2858L40ATMVD"},{"id":24112, "descr":"2858L40ATMVE"},{"id":6570, "descr":"2858L40AT"}]}	1
+2012-11-15	Spend	AT&TWired_4246L301AT_NtvSpnd_Q312	targetSegmentStr	{"v":2, "iF":[{"id":54109, "descr":"4246L301AT"}], "iLE":"OR", "eF":[{"id":3936, "descr":"2399L10NNImp"},{"id":6568, "descr":"2858L10NNImp"},{"id":53522, "descr":"4246L10NNImp"},{"id":24108, "descr":"2858L40ATMVA"},{"id":24109, "descr":"2858L40ATMVB"},{"id":24110, "descr":"2858L40ATMVC"},{"id":24111, "descr":"2858L40ATMVD"},{"id":24112, "descr":"2858L40ATMVE"}], "eLE":"OR", "lE":"AND"}->{"v":2, "lE":"AND", "iLE":"OR", "iF":[{"id":54109, "descr":"4246L301AT"}], "eLE":"OR", "eF":[{"id":3936, "descr":"2399L10NNImp"},{"id":6568, "descr":"2858L10NNImp"},{"id":53522, "descr":"4246L10NNImp"},{"id":24108, "descr":"2858L40ATMVA"},{"id":24109, "descr":"2858L40ATMVB"},{"id":24110, "descr":"2858L40ATMVC"},{"id":24111, "descr":"2858L40ATMVD"},{"id":24112, "descr":"2858L40ATMVE"},{"id":6570, "descr":"2858L40AT"}]}	1
+2012-11-15	Spend	AT&TWired_ATM6_NtvSpnd_Q212	targetSegmentStr	{"v":2, "lE":"AND", "iLE":"AND", "iF":[{"id":6569, "descr":"2858L30AT"},{"id":6568, "descr":"2858L10NNImp"}], "eLE":"AND", "eF":[]}->{"v":2, "lE":"AND", "iLE":"AND", "iF":[{"id":6569, "descr":"2858L30AT"},{"id":6568, "descr":"2858L10NNImp"}], "eLE":"AND", "eF":[{"id":6570, "descr":"2858L40AT"}]}	1
+2012-11-27	PaceCredit	AT&TWired_2858L30AT_NtvSpnd_Q212	pacingLimit	75000.0->50000.0	1
+2012-11-27	PaceCredit	AT&TWired_2858L40LSA_NtvSpnd_Q212	pacingLimit	100000.0->50000.0	1
+2012-11-27	PaceCredit	AT&TWired_2858L40LSB_NtvSpnd_Q212	pacingLimit	100000.0->50000.0	1
+2012-11-27	PaceCredit	AT&TWired_2858L40LSC_NtvSpnd_Q212	pacingLimit	100000.0->50000.0	1
+2012-11-27	PaceCredit	AT&TWired_2858L40LSF_NtvSpnd_Q212	pacingLimit	50000.0->25000.0	1
+2012-11-27	PaceCredit	AT&TWired_ATM6_NtvSpnd_Q212	pacingLimit	500000.0->300000.0	1
