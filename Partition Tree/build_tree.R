@@ -2,9 +2,9 @@
 library(rjson)
 
 
-u=read.table("~/Documents/Git/Partition Tree/changes_charlie", sep="\t")
+u=read.table("~/Documents/git/d3/Partition Tree/changes_charlie", sep="\t")
 names(u)=c("hit_date","entity","spend_descr","field","old_new", "freq")
-u$hit_date=paste("v",u$hit_date, sep="")
+#u$hit_date=paste("v",u$hit_date, sep="")
 #u$hit_date=sub('-','.',u$hit_date)
 #u$hit_date=sub('-','.',u$hit_date)
 
@@ -41,7 +41,6 @@ for(i in 1:length(hit_dates))
 				for(m in 1:length(old_news))
 				{
 					
-					#REDUCING LOAD FOR TESTING
 					#Create freq.list
 					freqs=u.field$freq[u.field$old_new==old_news[m]]
 					#freq.list=list()
