@@ -3,23 +3,13 @@
 <head>
 	<script type="text/javascript" src="d3.js"></script>
 	<style>
-		h1{
-			font-family:sans-serif;
-			font-size:16pt;
-			color:blue;
-		}
 		.axis path{
 			fill:none;
-			stroke:black;
+			stroke: black;
 		}
 		.axis {
 			font-size: 8pt;
 			font-family:sans-serif;
-		}
-		.label {
-			font-size: 8pt;
-			font-family:sans-serif;
-			opacity: 0.7;
 		}
 		.tick{
 			fill:none;
@@ -74,33 +64,6 @@
 		d3.selectAll("circle")
 			.attr("r", 5);
 
-		//Add mouseover labels to circles
-		d3.selectAll("circle")
-			.on('mouseover', function(d){
-				d3.select(this)
-					.transition()
-					.duration(50)
-					.attr("r",7);
-				d3.select('text.label').remove();
-				d3.select("svg")
-					.append('text')
-					.text(d.dist_between_fail + ' miles')
-					.attr('class','label')
-					.attr('x', x_scale(d.collision_with_injury) + 10)
-					.attr('y', y_scale(d.dist_between_fail) - 10)
-					.style('color','red');
-			})
-			.on('mouseout', function(d){
-				d3.select(this)
-					.transition()
-					.attr("r",5);
-				d3.select('text.label')
-					.transition()
-					.style('opacity',0)
-					.style('color','red')
-					.remove();
-			})
-			
 		// Create axes
 		d3.select("svg")
 			.append("g")
@@ -112,6 +75,8 @@
 				.attr("class", "y axis")
 				.attr("transform", "translate(" + margin + ", 0 )")
 			.call(y_axis);
+
+
 
 		//Axis titles
 		var x_title="collisions with injury (per million miles)"
@@ -128,7 +93,6 @@
 	</script>
 </head>
 <body>
-	<h1>Bus Performance</h1>
 	<script>
 		d3.json('data/bus_perf.json', draw);
 	</script>
