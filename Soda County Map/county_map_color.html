@@ -9,6 +9,12 @@
 	  stroke-linejoin: round;
 	}
 	
+	.selected_county {
+		fill: none;
+		stroke: yellow;
+		stroke-opacity: 1;
+	}
+	
 	.q0-9 { fill:rgb(247,251,255); }
 	.q1-9 { fill:rgb(222,235,247); }
 	.q2-9 { fill:rgb(198,219,239); }
@@ -19,6 +25,22 @@
 	.q7-9 { fill:rgb(8,81,156); }
 	.q8-9 { fill:rgb(8,48,107); }
 	
+	.soda_1 { fill:lightblue; }
+	.soda_2 { fill:blue; }
+	.pop_1 { fill:lightgreen; }
+	.pop_2 { fill:green; }
+	.coke_1 { fill:pink; }
+	.coke_2 { fill:red; }
+	.other_1 { fill:violet; }
+	.other_2 { fill:purple; }
+	.null_0 { fill:grey; }
+	
+	.soda { fill:blue; }
+	.pop { fill:green; }
+	.coke { fill:red; }
+	.other { fill:purple; }
+	.none { fill:lightgrey; }
+	.null { fill:grey; }
 	
 	</style>
 </head>
@@ -36,7 +58,7 @@ var quantize = d3.scale.quantize()
     .range(d3.range(9).map(function(i) { return "q" + i + "-9"; }));
 
 var path = d3.geo.path();
-
+	
 var svg = d3.select("body").append("svg")
     .attr("width", width)
     .attr("height", height);
@@ -44,26 +66,54 @@ var svg = d3.select("body").append("svg")
 queue()
     .defer(d3.json, "us.json")
     .defer(d3.tsv, "pvscounty_fips.tsv")
-    .await(ready);
-
+    .await(ready)
+	
+	
 function ready(error, us, pvscounty_fips) {
   var rateById = {};
-
-  pvscounty_fips.forEach(function(d) { rateById[d.id] = +d.PCTSODA; });
+  var typeById = {};
+  
+  pvscounty_fips.forEach(function(d) {
+	rateById[d.id] = +d.PCTSODA
+	typeById[d.id] = d.majority;
+  });
 
   svg.append("g")
       .attr("class", "counties")
     .selectAll("path")
       .data(topojson.object(us, us.objects.counties).geometries)
     .enter().append("path")
-      .attr("class", function(d) { return quantize(rateById[d.id]); })
-      .attr("d", path);
+		.attr("class", function(d) { return typeById[d.id]; })
+		.attr("d", path);
 
   svg.append("path")
       .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a.id !== b.id; }))
       .attr("class", "states")
       .attr("d", path);
+	  
+
+//Highlight county on mouseover
+var county = svg.select("g").selectAll("path")
+
+county.on('mouseover',function(){
+		var selected_county = d3.select(this)
+			.style('stroke','yellow')
+			;
+	})
+	.on('mouseout', function(d){
+		d3.select(this)
+			.style('stroke','')
+	});
 }
+
+
+//INTERACTIVE EFFECTS
+//	.on('mouseover', function(d){
+//		d3.select(this)
+//			.transition()
+			//.attr('class','selected_county');
+//			.style('stroke', 'yellow');
+//	})
 
 </script>
 </body>

@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
-<style>
-
-.states {
-  fill: none;
-  stroke: #fff;
-  stroke-linejoin: round;
-}
-
-.q0-9 { fill:rgb(247,251,255); }
-.q1-9 { fill:rgb(222,235,247); }
-.q2-9 { fill:rgb(198,219,239); }
-.q3-9 { fill:rgb(158,202,225); }
-.q4-9 { fill:rgb(107,174,214); }
-.q5-9 { fill:rgb(66,146,198); }
-.q6-9 { fill:rgb(33,113,181); }
-.q7-9 { fill:rgb(8,81,156); }
-.q8-9 { fill:rgb(8,48,107); }
-
-</style>
+<head>
+	<style>
+	
+	.states {
+	  fill: none;
+	  stroke: #fff;
+	  stroke-linejoin: round;
+	}
+	
+	.q0-9 { fill:rgb(247,251,255); }
+	.q1-9 { fill:rgb(222,235,247); }
+	.q2-9 { fill:rgb(198,219,239); }
+	.q3-9 { fill:rgb(158,202,225); }
+	.q4-9 { fill:rgb(107,174,214); }
+	.q5-9 { fill:rgb(66,146,198); }
+	.q6-9 { fill:rgb(33,113,181); }
+	.q7-9 { fill:rgb(8,81,156); }
+	.q8-9 { fill:rgb(8,48,107); }
+	
+	</style>
+</head>
 <body>
 <script src="d3.v3.min.js"></script>
 <script src="queue.v1.min.js"></script>
@@ -39,7 +41,7 @@ var svg = d3.select("body").append("svg")
     .attr("height", height);
 
 queue()
-    .defer(d3.json, "/d/4090846/us.json")
+    .defer(d3.json, "us.json")
     .defer(d3.tsv, "unemployment.tsv")
     .await(ready);
 
@@ -63,3 +65,4 @@ function ready(error, us, unemployment) {
 }
 
 </script>
+</body>

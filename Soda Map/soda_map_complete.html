@@ -32,7 +32,7 @@
 				.enter();
 				
 			d3.selectAll('path')
-				.attr('fill', function(d){
+				.style('fill', function(d){
 					if(d.maxcat=="soda"){
 						return d3.rgb(0,0,255*d.maxpct)
 					}

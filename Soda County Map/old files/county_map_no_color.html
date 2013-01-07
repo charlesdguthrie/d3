@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+	<script type="text/javascript" src="d3.js"></script>
+	<script src="queue.v1.min.js"></script>
+
+	<style>
+	
+	.states {
+	  fill: none;
+	  stroke: #fff;
+	  stroke-linejoin: round;
+	}
+	
+	.q0-9 { fill:rgb(247,251,255); }
+	.q1-9 { fill:rgb(222,235,247); }
+	.q2-9 { fill:rgb(198,219,239); }
+	.q3-9 { fill:rgb(158,202,225); }
+	.q4-9 { fill:rgb(107,174,214); }
+	.q5-9 { fill:rgb(66,146,198); }
+	.q6-9 { fill:rgb(33,113,181); }
+	.q7-9 { fill:rgb(8,81,156); }
+	.q8-9 { fill:rgb(8,48,107); }
+	</style>
+
+
+</head>
+<body>
+<script>
+	var width = 960,
+		height = 500;
+	
+	// create a geo path - https://github.com/mbostock/d3/wiki/Geo-Paths
+	var path = d3.geo.path();
+	 
+	// create an svg element
+	var svg = d3.select("body").append("svg")
+		.attr("width",width)
+		.attr("height",height);
+	 
+	// create a container for counties
+	var counties = svg.append("g")
+		.attr("id", "counties");
+		
+	// create a container for states
+	var states = svg.append("g")
+		.attr("id", "states");
+	 
+	// load the county shape data
+	d3.json("us-counties.json", function(data) {
+	  // create paths for each county using the json data
+	  // and the geo path generator to draw the shapes
+	  counties.selectAll("path")
+		  .data(data.features)
+		.enter().append("path")
+		  .attr("d", path);
+	});
+	 
+	// load the state shape data
+	d3.json("us-states.json", function(data) {
+	  // create paths for each state using the json data
+	  // and the geo path generator to draw the shapes
+	  states.selectAll("path")
+		  .data(data.features)
+		.enter().append("path")
+		  .attr("d", path)
+		  .attr("class", "states");
+	});
+
+	// load the unemployment by county data
+	d3.csv("unemployment.csv", function(data){
+		var rateById = {};
+		data.forEach(function(d) { rateById[d.id] = +d.rate; });
+
+		// for each county, set the css class using the quantize function
+		// (an external CSS file contains the css classes for each color in the scheme)
+		counties.selectAll("path")
+		.attr("class", function(d) { return quantize(rateById[d.id]); })
+	});
+	
+	// quantize function takes a data point and returns a number
+	// between 0 and 8, to indicate intensity, the prepends a 'q'
+	// and appends '-9'
+	var quantize = d3.scale.quantize()
+    .domain([0, .15])
+    .range(d3.range(9).map(function(i) { return "q" + i + "-9"; }));
+</script>
+</body>
