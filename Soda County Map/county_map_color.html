@@ -63,6 +63,10 @@ var svg = d3.select("body").append("svg")
     .attr("width", width)
     .attr("height", height);
 
+var color = d3.scale.ordinal()
+	.domain(["pop","soda","coke","other","none","null"])
+    .range(["green","blue","red","purple","lightgrey","grey"]);	
+	
 queue()
     .defer(d3.json, "us.json")
     .defer(d3.tsv, "pvscounty_fips.tsv")
@@ -70,11 +74,9 @@ queue()
 	
 	
 function ready(error, us, pvscounty_fips) {
-  var rateById = {};
   var typeById = {};
   
   pvscounty_fips.forEach(function(d) {
-	rateById[d.id] = +d.PCTSODA
 	typeById[d.id] = d.majority;
   });
 
@@ -83,7 +85,7 @@ function ready(error, us, pvscounty_fips) {
     .selectAll("path")
       .data(topojson.object(us, us.objects.counties).geometries)
     .enter().append("path")
-		.attr("class", function(d) { return typeById[d.id]; })
+		.style("fill", function(d) { return color(typeById[d.id]); })
 		.attr("d", path);
 
   svg.append("path")
@@ -92,10 +94,10 @@ function ready(error, us, pvscounty_fips) {
       .attr("d", path);
 	  
 
-//Highlight county on mouseover
-var county = svg.select("g").selectAll("path")
+  //Highlight county on mouseover
+  var county = svg.select("g").selectAll("path")
 
-county.on('mouseover',function(){
+  county.on('mouseover',function(){
 		var selected_county = d3.select(this)
 			.style('stroke','yellow')
 			;
@@ -104,8 +106,30 @@ county.on('mouseover',function(){
 		d3.select(this)
 			.style('stroke','')
 	});
-}
 
+//Legend
+  var legend = svg.selectAll(".legend")
+      .data(["Pop", "Soda", "Coke", "Other", "No Majority", "No Data"])
+    .enter().append("g")
+      .attr("class", "legend")
+      .attr("transform", function(d, i) { return "translate(0," + (100 + i * 20) + ")"; });
+
+	  console.log(color.range)
+	  
+  legend.append("rect")
+      .attr("x", width - 18)
+      .attr("width", 18)
+      .attr("height", 18)
+      .style("fill", color);
+
+  legend.append("text")
+      .attr("x", width - 24)
+      .attr("y", 9)
+      .attr("dy", ".35em")
+      .style("text-anchor", "end")
+      .text(function(d) { return d; });
+
+}
 
 //INTERACTIVE EFFECTS
 //	.on('mouseover', function(d){
