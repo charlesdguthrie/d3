@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Life Expectancy</title>
+	<link rel="stylesheet" type="text/css" href="./life.css" />
+    <script type="text/javascript" src="./js/jquery-1.4.4.min.js"></script>
+	<script type="text/javascript" src="./js/d3.js"></script>
+	<script type="text/javascript" src="./js/d3.time.js"></script>
+	<script type="text/javascript" src="./js/d3.csv.js"></script>
+	
+	<link href='http://fonts.googleapis.com/css?family=Bevan|Cardo' rel='stylesheet' type='text/css'>
+  </head>
+<body>
+<div id="main-wrapper">
+    <div id="content">
+        <h1>Life Expectancy</h1>
+        <p>People are living longer around the world, some more so than others. Select a region (as defined by World Bank) below to compare, or roll over to the graph to highlight countries. Notice major dips during wars and tragedy.</p>
+        
+        <div id="filters">
+            <a id="EAS">East Asia and Pacific</a>
+            <a id="SAS">South Asia</a>
+            <a id="ECS">Europe and Central Asia</a>
+            <a id="MEA">Middle East and North Africa</a>
+            <a id="SSF">Sub-Saharan Africa</a>
+            <a id="LCN">Latin America and Caribbean</a>
+            <a id="NAC">North America</a>
+        </div><!-- @end #filters -->
+
+        <div id="blurb">
+            <div id="default-blurb">
+                <h2>World</h2>
+                <p>The average life expectancy in the world in 2009 was 69 years.</p>
+            </div>
+            <div id="blurb-content"></div>
+        </div>
+
+        <div id="vis"></div>
+        <div id="cite">Source: The World Bank; Graphic by: <a href="http://flowingdata.com">Nathan Yau</a></div>
+        
+    </div><!-- @end content -->
+</div><!-- @end #main-wrapper -->
+
+<script type="text/javascript" src="./life.js"></script>
+
+</body>
+</html>
