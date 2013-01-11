@@ -2,13 +2,12 @@ var regions = { "SAS": "South Asia" , "ECS": "Europe and Central Asia", "MEA": "
 	w = 925,
 	h = 550,
 	margin = 30,
-	startYear = 1960, 
-	endYear = 2010,
-	startAge = 20,
-	endAge = 80,
-	y = d3.scale.linear().domain([endAge, startAge]).range([0 + margin, h - margin]),
-	x = d3.scale.linear().domain([1960, 2009]).range([0 + margin -5, w]),
-	years = d3.range(startYear, endYear);
+	minLift = 0,
+	maxLift = 15,
+	startDate=d3.time.format("%Y-%m-%d").parse("2008-01-10"),
+	endDate=d3.time.format("%Y-%m-%d").parse("2009-01-06"),
+	y = d3.scale.linear().domain([maxLift, minLift]).range([0 + margin, h - margin]),
+	x = d3.time.scale().domain([startDate, endDate]).range([0 + margin -5, w]);
 
 var vis = d3.select("#vis")
     .append("svg:svg")
@@ -21,7 +20,7 @@ var line = d3.svg.line()
     .y(function(d) { return y(d.y); });
 					
 
-// Regions
+/* Regions
 var countries_regions = {};
 d3.text('country-regions.csv', 'text/csv', function(text) {
     var regions = d3.csv.parseRows(text);
@@ -29,28 +28,30 @@ d3.text('country-regions.csv', 'text/csv', function(text) {
         countries_regions[regions[i][0]] = regions[i][1];
     }
 });
+*/
 
 var startEnd = {},
     countryCodes = {};
-d3.text('life-expectancy-cleaned-all.csv', 'text/csv', function(text) {
+d3.text('cleaned-lift-data.csv', 'text/csv', function(text) {
     var countries = d3.csv.parseRows(text);
+	var rawdates = countries[0].slice(1,countries[0].length)
+	var dates=[]
     
     for (i=1; i < countries.length; i++) {
-        var values = countries[i].slice(2, countries[i.length-1]);
+        var values = countries[i].slice(1, countries[i.length-1]);
         var currData = [];
-        countryCodes[countries[i][1]] = countries[i][0];
-        
+        countryCodes[countries[i][0]] = countries[i][0];        
         var started = false;
         for (j=0; j < values.length; j++) {
+			dates[j] = d3.time.format("%m/%d/%y").parse(rawdates[j])
             if (values[j] != '') {
-                currData.push({ x: years[j], y: values[j] });
-            
+                currData.push({ x: dates[j], y: values[j] });
                 if (!started) {
-                    startEnd[countries[i][1]] = { 'startYear':years[j], 'startVal':values[j] };
+                    startEnd[countries[i][0]] = { 'startDate':dates[j], 'startVal':values[j] };
                     started = true;
                 } else if (j == values.length-1) {
-                    startEnd[countries[i][1]]['endYear'] = years[j];
-                    startEnd[countries[i][1]]['endVal'] = values[j];
+                    startEnd[countries[i][0]]['endDate'] = dates[j];
+                    startEnd[countries[i][0]]['endVal'] = values[j];
                 }
                 
             }
@@ -60,7 +61,6 @@ d3.text('life-expectancy-cleaned-all.csv', 'text/csv', function(text) {
         vis.append("svg:path")
             .data([currData])
             .attr("country", countries[i][1])
-            .attr("class", countries_regions[countries[i][1]])
             .attr("d", line)
             .on("mouseover", onmouseover)
             .on("mouseout", onmouseout);
@@ -68,17 +68,17 @@ d3.text('life-expectancy-cleaned-all.csv', 'text/csv', function(text) {
 });  
     
 vis.append("svg:line")
-    .attr("x1", x(startYear))
-    .attr("y1", y(startAge))
-    .attr("x2", x(endYear))
-    .attr("y2", y(startAge))
+    .attr("x1", x(startDate))
+    .attr("y1", y(minLift))
+    .attr("x2", x(endDate))
+    .attr("y2", y(minLift))
     .attr("class", "axis")
 
 vis.append("svg:line")
-    .attr("x1", x(startYear))
-    .attr("y1", y(startAge))
-    .attr("x2", x(startYear))
-    .attr("y2", y(endAge))
+    .attr("x1", x(startDate))
+    .attr("y1", y(minLift))
+    .attr("x2", x(startDate))
+    .attr("y2", y(maxLift))
     .attr("class", "axis")
 			
 vis.selectAll(".xLabel")
@@ -105,18 +105,18 @@ vis.selectAll(".xTicks")
     .enter().append("svg:line")
     .attr("class", "xTicks")
     .attr("x1", function(d) { return x(d); })
-    .attr("y1", y(startAge))
+    .attr("y1", y(minLift))
     .attr("x2", function(d) { return x(d); })
-    .attr("y2", y(startAge)+7)
+    .attr("y2", y(minLift)+7)
 	
 vis.selectAll(".yTicks")
     .data(y.ticks(4))
     .enter().append("svg:line")
     .attr("class", "yTicks")
     .attr("y1", function(d) { return y(d); })
-    .attr("x1", x(startYear-0.5))
+    .attr("x1", x(startDate-0.5))
     .attr("y2", function(d) { return y(d); })
-    .attr("x2", x(startYear))
+    .attr("x2", x(startDate))
 
 function onclick(d, i) {
     var currClass = d3.select(this).attr("class");
@@ -137,7 +137,7 @@ function onmouseover(d, i) {
     var percentChange = 100 * (countryVals['endVal'] - countryVals['startVal']) / countryVals['startVal'];
     
     var blurb = '<h2>' + countryCodes[countryCode] + '</h2>';
-    blurb += "<p>On average: a life expectancy of " + Math.round(countryVals['startVal']) + " years in " + countryVals['startYear'] + " and " + Math.round(countryVals['endVal']) + " years in " + countryVals['endYear'] + ", ";
+    blurb += "<p>On average: a life expectancy of " + Math.round(countryVals['startVal']) + " dates in " + countryVals['startDate'] + " and " + Math.round(countryVals['endVal']) + " dates in " + countryVals['endDate'] + ", ";
     if (percentChange >= 0) {
         blurb += "an increase of " + Math.round(percentChange) + " percent."
     } else {
@@ -158,21 +158,11 @@ function onmouseout(d, i) {
     $("#blurb-content").html('');
 }
 
-function showRegion(regionCode) {
-    var countries = d3.selectAll("path."+regionCode);
-    if (countries.classed('highlight')) {
-        countries.attr("class", regionCode);
-    } else {
-        countries.classed('highlight', true);
-    }
-}
-
 
 $(document).ready(function() {
     $('#filters a').click(function() {
         var countryId = $(this).attr("id");
         $(this).toggleClass(countryId);
-        showRegion(countryId);
     });
     
 });
