@@ -36,7 +36,11 @@
 		text-align: left;
 		word-wrap: normal;
 	}
-s
+
+	.tooltip{
+		font-family: sans-serif;
+		font-size: small
+	}
 	</style>
 </head>
 <body>
@@ -68,12 +72,23 @@ queue()
     .defer(d3.tsv, "pvscounty_fips.tsv")
     .await(ready)
 	
+//Create tooltip
+var tooltip = d3.select("body")
+	.append("div")
+	.attr("class","tooltip")
+	.style("position", "absolute")
+	.style("z-index", "10")
+	.style("visibility", "hidden")
+	.text("County");
 	
+//Build the map and legend	
 function ready(error, us, pvscounty_fips) {
   var typeById = {};
+  var countyName = {};
   
   pvscounty_fips.forEach(function(d) {
 	typeById[d.id] = d.majority;
+	countyName[d.id] = d.County_Name;
   });
 
   svg.append("g")
@@ -88,20 +103,26 @@ function ready(error, us, pvscounty_fips) {
       .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a.id !== b.id; }))
       .attr("class", "states")
       .attr("d", path);
-	  
+ 
 
   //Highlight county on mouseover
   var county = svg.select("g").selectAll("path")
-
-  county.on('mouseover',function(){
+  
+  county.on('mouseover',function(d){
 		var selected_county = d3.select(this)
 			.style('stroke','yellow')
-			;
-	})
+		tooltip.text(countyName[d.id])
+		return tooltip.style("visibility", "visible")
+
+	;})
+	.on("mousemove", function(){
+		return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px")
+	;})
 	.on('mouseout', function(d){
 		d3.select(this)
 			.style('stroke','')
-	});
+		return tooltip.style("visibility", "hidden")
+	;});
 
 //Legend
 
