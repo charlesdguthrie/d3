@@ -1,47 +1,64 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <head>
+	<script src="d3.v3.min.js"></script>
+	<script src="queue.v1.min.js"></script>
+	<script src="topojson.v0.min.js"></script>
+
 	<style>
-	
+	h1 {
+		font-family:sans-serif;
+		text-align: center;
+	}
+	h2{
+		font-family:sans-serif;
+		font-size: medium;
+		text-align: center;
+	}
 	.states {
 	  fill: none;
 	  stroke: #fff;
 	  stroke-linejoin: round;
 	}
 	
-	.q0-9 { fill:rgb(247,251,255); }
-	.q1-9 { fill:rgb(222,235,247); }
-	.q2-9 { fill:rgb(198,219,239); }
-	.q3-9 { fill:rgb(158,202,225); }
-	.q4-9 { fill:rgb(107,174,214); }
-	.q5-9 { fill:rgb(66,146,198); }
-	.q6-9 { fill:rgb(33,113,181); }
-	.q7-9 { fill:rgb(8,81,156); }
-	.q8-9 { fill:rgb(8,48,107); }
+	.selected_county {
+		fill: none;
+		stroke: yellow;
+		stroke-opacity: 1;
+	}
 	
-	.soda_1 { fill:lightblue; }
-	.soda_2 { fill:blue; }
-	.pop_1 { fill:lightgreen; }
-	.pop_2 { fill:green; }
-	.coke_1 { fill:pink; }
-	.coke_2 { fill:red; }
-	.other_1 { fill:violet; }
-	.other_2 { fill:purple; }
-	.null_0 { fill:grey; }
+	.legend {
+		font-family: sans-serif;
+		font-size: small
+	}
 	
-	.soda { fill:blue; }
-	.pop { fill:green; }
-	.coke { fill:red; }
-	.other { fill:purple; }
-	.none { fill:lightgrey; }
-	.null { fill:grey; }
+	.legend_title{
+		text-align: left;
+		word-wrap: normal;
+	}
+
+	.tooltip{
+		font-family: sans-serif;
+		font-size: small;
+		text-align: center;
+		background-color: white;
+		width: 100px;
+		height: 120px;
+		margin: 5px;
+		padding: 4px;
+	}
+	
+	.bar{
+		
+	}
 	
 	</style>
 </head>
 <body>
-<script src="d3.v3.min.js"></script>
-<script src="queue.v1.min.js"></script>
-<script src="topojson.v0.min.js"></script>
+	<div id="container" style="width:960px">
+		<h1>Pop vs Soda vs Coke</h1>
+		<h2>Each county's color represents the term used by majority (>50%) of the population for carbonated soft drinks</h2>
+	</div>
 <script>
 
 var width = 960,
@@ -52,33 +69,178 @@ var quantize = d3.scale.quantize()
     .range(d3.range(9).map(function(i) { return "q" + i + "-9"; }));
 
 var path = d3.geo.path();
-
+	
 var svg = d3.select("body").append("svg")
     .attr("width", width)
     .attr("height", height);
 
+var color = d3.scale.ordinal()
+	.domain(["pop","soda","coke","other","none","null"])
+    .range(["green","blue","red","purple","lightgrey","grey"]);	
+	
 queue()
     .defer(d3.json, "us.json")
     .defer(d3.tsv, "pvscounty_fips.tsv")
-    .await(ready);
+    .await(ready)
+	
+//Create tooltip
+var tooltip = d3.select("body").append("g")
+	.append("div")
+	.attr("class","tooltip")
+	.style("position", "absolute")
+	.style("z-index", "10")
+	.style("visibility", "hidden");
+	
+var tooltip_title=tooltip.append("div")
+	.text("county")
 
+//Add tooltip svg and bar chart
+var tw = 100,
+	th = 100,
+	pad = 4,
+	bw = tw/4 - pad;
+//var barchart=d3.select("body").select(".tooltip").append("svg")
+barchart = tooltip.append("svg")
+	.attr("width", tw)
+	.attr("height", th);
+
+popBar=barchart.append("rect")
+	.attr("class","bar")
+	.style("fill",color("pop"))
+	.attr("x",pad)
+	.attr("width", bw)	
+	.attr("y",th)
+	.attr("height",0);
+	
+sodaBar=barchart.append("rect")
+	.attr("class","bar")
+	.style("fill",color("soda"))
+	.attr("x", 2*pad + bw)
+	.attr("width", bw)	
+	.attr("y",th)
+	.attr("height",0);
+	
+cokeBar=barchart.append("rect")
+	.attr("class","bar")
+	.style("fill",color("coke"))
+	.attr("x", 3*pad + 2*bw)
+	.attr("width", bw)	
+	.attr("y",th)
+	.attr("height",0);
+	
+otherBar=barchart.append("rect")
+	.attr("class","bar")
+	.style("fill",color("other"))
+	.attr("x",4*pad + 3*bw)
+	.attr("width", bw)	
+	.attr("y",th)
+	.attr("height",0);
+	
+barchart.append("svg:line")
+	.attr("x1",0)
+	.attr("x2",tw)
+	.attr("y1",0.5*th)
+	.attr("y2",0.5*th)
+	.style("stroke","grey");
+
+//Build the map and legend	
 function ready(error, us, pvscounty_fips) {
-  var rateById = {};
+  var data=topojson.object(us, us.objects.counties).geometries
+  var typeById = {};
+  var countyName = {};
+  var pctPop = {};
+  var pctSoda = {};
+  var pctCoke = {};
+  var pctOther = {};
+  var pct = [{},{},{},{}];
+  
+  pvscounty_fips.forEach(function(d) {
+	typeById[d.id] = d.majority;
+	countyName[d.id] = d.County_Name;
+	pctPop[d.id] = d.PCTPOP
+	pctSoda[d.id] = d.PCTSODA
+	pctCoke[d.id] = d.PCTCOKE
+	pctOther[d.id] = d.PCTOTHER
+	pct[0][d.id] = d.PCTPOP
+	pct[1][d.id] = d.PCTSODA
+	pct[2][d.id] = d.PCTCOKE
+	pct[3][d.id] = d.PCTOTHER
+  });
 
-  pvscounty_fips.forEach(function(d) { rateById[d.id] = +d.PCTSODA; });
-
+  console.log(pct)
   svg.append("g")
       .attr("class", "counties")
     .selectAll("path")
       .data(topojson.object(us, us.objects.counties).geometries)
     .enter().append("path")
-      .attr("class", function(d) { return quantize(rateById[d.id]); })
-      .attr("d", path);
+		.style("fill", function(d) { return color(typeById[d.id]); })
+		.attr("d", path);
 
   svg.append("path")
       .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a.id !== b.id; }))
       .attr("class", "states")
       .attr("d", path);
+ 
+
+  //Highlight county on mouseover
+  var county = svg.select("g").selectAll("path")
+  
+  county.on('mouseover',function(d){
+		var selected_county = d3.select(this)
+			.style('stroke','yellow')
+			tooltip_title.text(countyName[d.id])
+			tooltip.style("visibility", "visible")
+		popBar.transition()
+			.attr("y", th - pctPop[d.id]*th)
+			.attr("height", pctPop[d.id]*th);
+		sodaBar.transition()
+			.attr("y", th - pctSoda[d.id]*th)
+			.attr("height", pctSoda[d.id]*th);
+		cokeBar.transition()
+			.attr("y", th - pctCoke[d.id]*th)
+			.attr("height", pctCoke[d.id]*th);
+		otherBar.transition()
+			.attr("y", th - pctOther[d.id]*th)
+			.attr("height", pctOther[d.id]*th);
+	})
+	.on("mousemove", function(){
+		return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px")
+	;})
+	.on('mouseout', function(d){
+		d3.select(this).style('stroke','')
+		barchart.selectAll(".bar").transition()
+			.attr("height",0)
+			.attr("y",th);
+		tooltip.style("visibility", "hidden")
+	;});
+	
+//Legend
+
+  var ly = 100,
+	  lx = width - 50;
+	  
+  var legend = svg.append("g")
+	.attr("class", "legend");
+	
+  var legend_item=legend.selectAll("legend_item")
+		.data(["Pop", "Soda", "Coke", "Other", "No Majority", "No Data"])
+		.enter().append("g")
+		.attr("transform", function(d, i) { return "translate(0," + (ly + i * 20) + ")"; });
+  
+  legend_item.append("rect")
+      .attr("x", lx + 6)
+      .attr("width", 18)
+      .attr("height", 18)
+	  .data(color.range())
+      .style("fill", function(d) {return(d); });
+
+  legend_item.append("text")
+      .attr("x", lx)
+      .attr("y", 9)
+      .attr("dy", ".35em")
+      .style("text-anchor", "end")
+      .text(function(d) { return d; });
+
 }
 
 </script>

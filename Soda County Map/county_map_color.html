@@ -39,8 +39,15 @@
 
 	.tooltip{
 		font-family: sans-serif;
-		font-size: small
+		font-size: 10px;
+		text-align: center;
+		background-color: white;
 	}
+	
+	.bar{
+		text-anchor:middle;	
+	}
+	
 	</style>
 </head>
 <body>
@@ -52,7 +59,8 @@
 
 var width = 960,
     height = 500;
-
+var drink_names = new Array("pop","soda","coke","other","none","null")
+	
 var quantize = d3.scale.quantize()
     .domain([0, .80])
     .range(d3.range(9).map(function(i) { return "q" + i + "-9"; }));
@@ -64,7 +72,7 @@ var svg = d3.select("body").append("svg")
     .attr("height", height);
 
 var color = d3.scale.ordinal()
-	.domain(["pop","soda","coke","other","none","null"])
+	.domain(drink_names)
     .range(["green","blue","red","purple","lightgrey","grey"]);	
 	
 queue()
@@ -73,22 +81,79 @@ queue()
     .await(ready)
 	
 //Create tooltip
-var tooltip = d3.select("body")
+var divh = 162,
+	divw = 100,
+	divpad = 4;
+	
+var tooltip = d3.select("body").append("g")
 	.append("div")
 	.attr("class","tooltip")
+	.attr("height",divh)
+	.attr("width",divw)
+	.attr("padding",divpad)
 	.style("position", "absolute")
 	.style("z-index", "10")
-	.style("visibility", "hidden")
-	.text("County");
+	.style("visibility", "hidden");
 	
+var tooltip_title=tooltip.append("div")
+	.text("county")
+
+//Add tooltip svg and bar chart
+var tw = 100,
+	th = 90,
+	pad = 4,
+	bw = tw/4 - pad;
+//var barchart=d3.select("body").select(".tooltip").append("svg")
+barchart = tooltip.append("svg")
+	.attr("width", tw)
+	.attr("height", th + 10);
+
+//Build bars
+var bars = new Array();
+for (var i = 0; i < 4; i++) {
+	bars[i]=barchart.append("g")
+	.attr("class","bar");
+	
+	bars[i].append("rect")
+	.style("fill",color(drink_names[i]))
+	.attr("x",pad + pad*i + bw*i)
+	.attr("width", bw)	
+	.attr("y",th)
+	.attr("height",0);
+	
+	bars[i].append("text")
+	  .text(0)
+	  .attr("x",pad + pad*i + bw*i + bw/2)
+	  .attr("y",th - 5)
+}
+	
+//Add line to indicate majority
+barchart.append("svg:line")
+	.attr("x1",0)
+	.attr("x2",tw)
+	.attr("y1",0.5*th)
+	.attr("y2",0.5*th)
+	.style("stroke","grey");
+
 //Build the map and legend	
 function ready(error, us, pvscounty_fips) {
+  var data=topojson.object(us, us.objects.counties).geometries
   var typeById = {};
   var countyName = {};
+  var pct = [{},{},{},{}];
+  var num = [{},{},{},{}];
   
   pvscounty_fips.forEach(function(d) {
 	typeById[d.id] = d.majority;
 	countyName[d.id] = d.County_Name;
+	pct[0][d.id] = d.PCTPOP;
+	pct[1][d.id] = d.PCTSODA;
+	pct[2][d.id] = d.PCTCOKE;
+	pct[3][d.id] = d.PCTOTHER;
+	num[0][d.id] = d.SUMPOP;
+	num[1][d.id] = d.SUMSODA;
+	num[2][d.id] = d.SUMCOKE;
+	num[3][d.id] = d.SUMOTHER;
   });
 
   svg.append("g")
@@ -111,19 +176,31 @@ function ready(error, us, pvscounty_fips) {
   county.on('mouseover',function(d){
 		var selected_county = d3.select(this)
 			.style('stroke','yellow')
-		tooltip.text(countyName[d.id])
-		return tooltip.style("visibility", "visible")
-
-	;})
+			tooltip_title.text(countyName[d.id])
+			tooltip.style("visibility", "visible")
+			
+		for (var i = 0; i < 4; i++) {
+			bars[i].selectAll("rect").transition()
+			  .attr("y", th - pct[i][d.id]*th)
+			  .attr("height", pct[i][d.id]*th);
+			bars[i].selectAll("text").transition()
+			  .attr("y", th - pct[i][d.id]*th - 5)
+			  .text(num[i][d.id]);
+		}
+	})
 	.on("mousemove", function(){
 		return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px")
 	;})
 	.on('mouseout', function(d){
-		d3.select(this)
-			.style('stroke','')
-		return tooltip.style("visibility", "hidden")
+		d3.select(this).style('stroke','')
+		barchart.selectAll("rect").transition()
+			.attr("height",0)
+			.attr("y",th);
+		barchart.selectAll("text").transition()
+			.attr("y",th);
+		tooltip.style("visibility", "hidden")
 	;});
-
+	
 //Legend
 
   var ly = 100,
