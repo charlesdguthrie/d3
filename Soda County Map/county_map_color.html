@@ -88,9 +88,7 @@ var divh = 162,
 var tooltip = d3.select("body")
 	.append("div")
 	.attr("class","tooltip")
-	.style("height", function() {return divh + "px"})
-	.style("width", function() {return divw + "px"})
-	.style("padding", divpad)
+
 	.style("position", "absolute")
 	.style("z-index", "10")
 	.style("visibility", "hidden");
@@ -100,12 +98,13 @@ var tooltip_title=tooltip.append("div")
 
 //Add tooltip svg and bar chart
 var tw = 100,
-	th = divh - 8,
+	th = 100,
+	bh = th - 15
 	pad = 4,
 	bw = (tw-pad)/4 - pad;
 barchart = tooltip.append("div").append("svg")
 	.attr("width", tw)
-	.attr("height", th );
+	.attr("height", th);
 
 //Build bars
 var bars = new Array();
@@ -174,10 +173,10 @@ function ready(error, us, pvscounty_fips) {
 			
 		for (var i = 0; i < 4; i++) {
 			bars[i].selectAll("rect").transition()
-			  .attr("y", th - pct[i][d.id]*th)
-			  .attr("height", pct[i][d.id]*th);
+			  .attr("y", th - pct[i][d.id]*bh)
+			  .attr("height", pct[i][d.id]*bh);
 			bars[i].selectAll("text").transition()
-			  .attr("y", th - pct[i][d.id]*th - 5)
+			  .attr("y", th - pct[i][d.id]*bh - 5)
 			  .text(num[i][d.id]);
 		}
 		
