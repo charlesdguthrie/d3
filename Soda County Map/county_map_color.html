@@ -39,7 +39,7 @@
 
 	.tooltip{
 		font-family: sans-serif;
-		font-size: 10px;
+		font-size: 12px;
 		text-align: center;
 		background-color: white;
 	}
@@ -85,12 +85,12 @@ var divh = 162,
 	divw = 100,
 	divpad = 4;
 	
-var tooltip = d3.select("body").append("g")
+var tooltip = d3.select("body")
 	.append("div")
 	.attr("class","tooltip")
-	.attr("height",divh)
-	.attr("width",divw)
-	.attr("padding",divpad)
+	.style("height", function() {return divh + "px"})
+	.style("width", function() {return divw + "px"})
+	.style("padding", divpad)
 	.style("position", "absolute")
 	.style("z-index", "10")
 	.style("visibility", "hidden");
@@ -100,13 +100,12 @@ var tooltip_title=tooltip.append("div")
 
 //Add tooltip svg and bar chart
 var tw = 100,
-	th = 90,
+	th = divh - 8,
 	pad = 4,
-	bw = tw/4 - pad;
-//var barchart=d3.select("body").select(".tooltip").append("svg")
-barchart = tooltip.append("svg")
+	bw = (tw-pad)/4 - pad;
+barchart = tooltip.append("div").append("svg")
 	.attr("width", tw)
-	.attr("height", th + 10);
+	.attr("height", th );
 
 //Build bars
 var bars = new Array();
@@ -127,13 +126,7 @@ for (var i = 0; i < 4; i++) {
 	  .attr("y",th - 5)
 }
 	
-//Add line to indicate majority
-barchart.append("svg:line")
-	.attr("x1",0)
-	.attr("x2",tw)
-	.attr("y1",0.5*th)
-	.attr("y2",0.5*th)
-	.style("stroke","grey");
+
 
 //Build the map and legend	
 function ready(error, us, pvscounty_fips) {
@@ -187,6 +180,14 @@ function ready(error, us, pvscounty_fips) {
 			  .attr("y", th - pct[i][d.id]*th - 5)
 			  .text(num[i][d.id]);
 		}
+		
+		//Add line to indicate majority
+		barchart.append("svg:line")
+		.attr("x1",0)
+		.attr("x2",tw)
+		.attr("y1",0.5*th)
+		.attr("y2",0.5*th)
+		.style("stroke","grey");
 	})
 	.on("mousemove", function(){
 		return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px")
