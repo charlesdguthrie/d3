@@ -4,6 +4,7 @@
 	<script src="d3.v3.min.js"></script>
 	<script src="queue.v1.min.js"></script>
 	<script src="topojson.v0.min.js"></script>
+	<script src="fisheye.js"></script>
 
 	<style>
 	h1 {
@@ -80,6 +81,10 @@ queue()
     .defer(d3.tsv, "pvscounty_fips.tsv")
     .await(ready)
 
+//Setup Fisheye
+var fisheye = d3.fisheye.circular()
+    .radius(200)
+    .distortion(2);
 	
 //Create tooltip
 var divh = 162,
@@ -191,8 +196,7 @@ function ready(error, us, pvscounty_fips) {
 		.style("opacity",0.6);
 	})
 	.on("mousemove", function(){
-		tooltip.style("top", (event.pageY-10)+"px")
-			.style("left",(event.pageX+10)+"px")
+		tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px")
 	;})
 	.on('mouseout', function(d){
 		d3.select(this).style('stroke','')
@@ -203,6 +207,10 @@ function ready(error, us, pvscounty_fips) {
 			.attr("y",th);
 		tooltip.style("visibility", "hidden")
 	;});
+	
+	svg.on("mousemove", function() {
+		fisheye.focus(d3.mouse(this));
+	});
 	
 //Legend
 
@@ -230,6 +238,7 @@ function ready(error, us, pvscounty_fips) {
       .attr("dy", ".35em")
       .style("text-anchor", "end")
       .text(function(d) { return d; });
+
 }
 
 </script>

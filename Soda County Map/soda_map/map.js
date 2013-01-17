@@ -1,69 +1,6 @@
-<!DOCTYPE html>
-<meta charset="utf-8">
-<head>
-	<script src="d3.v3.min.js"></script>
-	<script src="queue.v1.min.js"></script>
-	<script src="topojson.v0.min.js"></script>
-
-	<style>
-	h1 {
-		font-family:sans-serif;
-		text-align: center;
-	}
-	h2{
-		font-family:sans-serif;
-		font-size: medium;
-		text-align: center;
-	}
-	.states {
-	  fill: none;
-	  stroke: #fff;
-	  stroke-linejoin: round;
-	}
-	
-	.selected_county {
-		fill: none;
-		stroke: yellow;
-		stroke-opacity: 1;
-	}
-	
-	.legend {
-		font-family: sans-serif;
-		font-size: small
-	}
-	
-	.legend_title{
-		text-align: left;
-		word-wrap: normal;
-	}
-
-	.tooltip{
-		font-family: sans-serif;
-		font-size: 12px;
-		text-align: center;
-		background-color: white;
-	}
-	
-	.bar{
-		text-anchor:middle;	
-	}
-	
-	</style>
-</head>
-<body>
-	<div id="container" style="width:960px">
-		<h1>Pop vs Soda vs Coke</h1>
-		<h2>Each county's color represents the term used by majority (>50%) of the population for carbonated soft drinks</h2>
-	</div>
-<script>
-
 var width = 960,
     height = 500;
 var drink_names = new Array("pop","soda","coke","other","none","null")
-	
-var quantize = d3.scale.quantize()
-    .domain([0, .80])
-    .range(d3.range(9).map(function(i) { return "q" + i + "-9"; }));
 
 var path = d3.geo.path();
 	
@@ -80,12 +17,7 @@ queue()
     .defer(d3.tsv, "pvscounty_fips.tsv")
     .await(ready)
 
-	
 //Create tooltip
-var divh = 162,
-	divw = 100,
-	divpad = 4;
-	
 var tooltip = d3.select("body")
 	.append("div")
 	.attr("class","tooltip")
@@ -103,6 +35,7 @@ var tw = 100,
 	bh = th - 15
 	pad = 4,
 	bw = (tw-pad)/4 - pad;
+	
 barchart = tooltip.append("div").append("svg")
 	.attr("width", tw)
 	.attr("height", th);
@@ -126,8 +59,6 @@ for (var i = 0; i < 4; i++) {
 	  .attr("y",th - 5)
 }
 	
-
-
 //Build the map and legend	
 function ready(error, us, pvscounty_fips) {
   var data=topojson.object(us, us.objects.counties).geometries
@@ -231,6 +162,3 @@ function ready(error, us, pvscounty_fips) {
       .style("text-anchor", "end")
       .text(function(d) { return d; });
 }
-
-</script>
-</body>
