@@ -17,18 +17,16 @@ queue()
     .defer(d3.tsv, "pvscounty_fips.tsv")
     .await(ready)
 
-
 //Create tooltip
 var tooltip = d3.select("body")
 	.append("div")
 	.attr("class","tooltip")
 	.style("position", "absolute")
 	.style("z-index", "10")
-	.style("visibility", "hidden");	
-
+	.style("visibility", "hidden");
+	
 var tooltip_title=tooltip.append("div")
 	.text("county")
-
 
 //Add tooltip svg and bar chart
 var tw = 100,
@@ -40,7 +38,6 @@ var tw = 100,
 barchart = tooltip.append("div").append("svg")
 	.attr("width", tw)
 	.attr("height", th);
-
 
 //Build bars
 var bars = new Array();
@@ -60,7 +57,6 @@ for (var i = 0; i < 4; i++) {
 	  .attr("x",pad + pad*i + bw*i + bw/2)
 	  .attr("y",th - 5)
 }
-
 	
 //Build the map and legend	
 function ready(error, us, pvscounty_fips) {
@@ -97,10 +93,6 @@ function ready(error, us, pvscounty_fips) {
       .attr("d", path);
 
 
-  
-/*******************
- *Mouseover actions*
- *******************/
   //Highlight county on mouseover
   var county = svg.select("g").selectAll("path")
   
@@ -129,10 +121,11 @@ function ready(error, us, pvscounty_fips) {
 		.style("opacity",0.75);
 	})
 	.on("mousemove", function(){
-		tooltip.style("top", (d3.mouse(this)[1]-20)+"px")
-			.style("left",(d3.mouse(this)[0]+20)+"px")
+		//barchart.attr("transform", "translate(" + d3.mouse(this) + ")");
+		//tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px")
+		tooltip.style("top", (d3.mouse(this)[1]-10)+"px")
+		.style("left",(d3.mouse(this)[0]+10)+"px")
 	;})
-
 	
 	//on mouseout, restore bars to zero and hide tooltip
 	.on('mouseout', function(d){
@@ -146,11 +139,8 @@ function ready(error, us, pvscounty_fips) {
 		tooltip.style("visibility", "hidden");
 	;});
 	
-	
-	
-/*******************
- **** Legend *******
- *******************/
+//Legend
+
   var ly = 100,
 	  lx = width - 50;
 	  
@@ -175,29 +165,4 @@ function ready(error, us, pvscounty_fips) {
       .attr("dy", ".35em")
       .style("text-anchor", "end")
       .text(function(d) { return d; });
-
-  legend_item.selectAll("rect").on('mouseover',function(){
-	d3.select(this).style('stroke','yellow');});
 }
-
-
-
-/***************
- *   Info      *
- *   ***********/
-var guide = svg.append("g")
-	  .attr("class","guide");
-	  
-guide.append("text")
-		.attr("x", .9*width)
-		.attr("y", .5*height)
-        .attr("dy", ".35em")
-        .style("text-anchor", "end")
-	    .text("test text")
-guide.append("svg:line")
-	  	.attr("x1",.9*width)
-		.attr("x2",.5*width)
-		.attr("y1",.3*height)
-		.attr("y2",.9*height)
-		.style("stroke","grey")
-		.style("opacity",0.75);
