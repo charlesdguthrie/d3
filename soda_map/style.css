@@ -14,14 +14,15 @@ time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font-size: 100%;
 	font: inherit;
+	font-size: 100%;
 	vertical-align: baseline;
 	font-family: 'HelveticaNeue',Helvetica,Arial;
 }
 
 h1 {
 	font-size:300%;
+	font-family:'HelveticaNeue',Helvetica,Arial;
 	font-style: normal;
 	text-align: center;
 }
@@ -52,7 +53,7 @@ h3 {
 }
 
 .legend {
-	font-family: sans-serif;
+	font-family: inherit;
 	font-size: 12px;
 }
 
@@ -70,4 +71,22 @@ h3 {
 
 .bar{
 	text-anchor:middle;	
+}
+
+.guide{
+	position:absolute;
+	width:150px;
+	left:800px;
+	top:400px;
+	font-size:12px;
+	z-index: +3;
+}
+
+#Loading{
+	position:absolute;
+	width:150px;
+	left:40%;
+	top:40%;
+	font-size: 20px;
+	z-index: -1;
 }

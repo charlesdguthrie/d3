@@ -97,6 +97,32 @@ function ready(error, us, pvscounty_fips) {
       .attr("d", path);
 
 
+/***************
+ *   Info      *
+ *   ***********/
+
+
+
+var guide = svg.append("g")
+	  .attr("class","guide");
+
+	  
+/*
+guide.append("text")
+		.attr("x", .9*width)
+		.attr("y", .5*height)
+        .attr("dy", ".35em")
+        .style("text-anchor", "end")
+	    .text("test text")
+guide.append("svg:line")
+	  	.attr("x1",.9*width)
+		.attr("x2",.5*width)
+		.attr("y1",.3*height)
+		.attr("y2",.9*height)
+		.style("stroke","grey")
+		.style("opacity",0.75);
+*/	
+
   
 /*******************
  *Mouseover actions*
@@ -182,22 +208,3 @@ function ready(error, us, pvscounty_fips) {
 
 
 
-/***************
- *   Info      *
- *   ***********/
-var guide = svg.append("g")
-	  .attr("class","guide");
-	  
-guide.append("text")
-		.attr("x", .9*width)
-		.attr("y", .5*height)
-        .attr("dy", ".35em")
-        .style("text-anchor", "end")
-	    .text("test text")
-guide.append("svg:line")
-	  	.attr("x1",.9*width)
-		.attr("x2",.5*width)
-		.attr("y1",.3*height)
-		.attr("y2",.9*height)
-		.style("stroke","grey")
-		.style("opacity",0.75);
