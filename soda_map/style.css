@@ -17,13 +17,14 @@ time, mark, audio, video {
 	font: inherit;
 	font-size: 100%;
 	vertical-align: baseline;
-	font-family: 'HelveticaNeue',Helvetica,Arial;
+   font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+   font-weight: inherit;
 }
 
 h1 {
 	font-size:300%;
-	font-family:'HelveticaNeue',Helvetica,Arial;
-	font-style: normal;
+   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+   font-weight: 300;
 	text-align: center;
 }
 h2 {
@@ -40,6 +41,24 @@ h3 {
 	margin-top:5px;
 	margin-bottom:5px;
 }
+h4 {
+	font-size: 14px;
+	font-weight:600;
+	text-align: center;
+	margin-bottom:5px;
+}
+p {
+	text-align: left;
+}
+
+.pop{fill:green;}
+.soda{fill:rgb(60,100,255);}
+.coke{fill:#FF3333;}
+.other{fill:purple;}
+.none{fill:#994C00}
+.null{fill:grey;}
+.unselected{fill:lightgrey;}
+
 .states {
   fill: none;
   stroke: #fff;
@@ -60,33 +79,63 @@ h3 {
 .legend_title{
 	text-align: left;
 	word-wrap: normal;
+	text-a
 }
 
 .tooltip{
 	font-family: inherit;
 	font-size: 12px;
+	padding-left:4px;
+	padding-right:4px;
 	text-align: center;
 	background-color: white;
+	font-weight:600px;
 }
 
 .bar{
-	text-anchor:middle;	
+	text-anchor:middle;
+	padding-left:4px;
+	padding-right:4px;
+	font-size: 10px;
+}
+
+.city{
+	font-size: 12px;
+	text-anchor: start;
+	font-weight: 600;
+	fill: black;
 }
 
 .guide{
 	position:absolute;
 	width:150px;
-	left:800px;
-	top:400px;
+	left:820px;
+	top:360px;
 	font-size:12px;
+	text-align: justify
 	z-index: +3;
+}
+
+#guide_overall{
+	display: inherit
+}
+#guide_pop, #guide_soda, #guide_coke, #guide_other, #guide_none, #guide_null{
+		display: none;
 }
 
 #Loading{
 	position:absolute;
 	width:150px;
-	left:40%;
-	top:40%;
+	left:384px;
+	top:250px;
 	font-size: 20px;
 	z-index: -1;
+}
+
+#sources{
+	display:inherit;
+	position:absolute;
+	left:130px;
+	top:560px;
+	font-size: 10px;
 }

@@ -8,19 +8,66 @@
 
 </head>
 <body>
-	<div id="container" style="width:960px" style-"position:relative;">
+	<div id="container" style="width:970px" style="position:relative;">
 		<h1>Pop, Soda, or Coke?</h1>
-		<h2>Each county's color represents the term used by the majority (more than 50%) of the local population for carbonated soft drinks</h2>
-		<h3>Hover over map and legend for more details</h2>
+		<h2>Each county&rsquo;s color represents the term used by the majority (more than 50%) of the local survey respondents for carbonated soft drinks</h2>
+		<h3></br>- Hover over map and legend for more details -</h3>
 		<div id="Loading">
 			<p>Loading Map...</p>
 		</div>
-		<div class="guide" >
+		
+		<div class="guide" id="guide_overall">
 			<p>
-				This is a map.  It has so much information that I have to word-wrap inside this div.
-				Notice St. Louis says "soda", but the others may not.
+				People that tend to share specific language traits may share other cultural traits.  In this way, terms used for carbonated beverages can be loose indicators of more general cultural patterns.  This map is built in <a href="http://www.d3js.org">D3</a> from survey data collected at <a href="http://popvssoda.com">PopVsSoda.com</a> through December 2012.  Hover over the map and legend for more details.  
 			</p>
 		</div>
+		<div class="guide" id="guide_pop">
+			<h4>Pop</h4>
+			<p>
+				&lsquo;Pop&rsquo; is used primarily in the Midwest and Northwestern US.  According to the Oxford English Dictionary, the term originates from the &lsquo;pop&rsquo; of the cork when removed from a carbonated beverage bottle.
+			</p>
+		</div>
+		<div class="guide" id="guide_soda">
+			<h4>Soda</h4>
+			<p>
+				&lsquo;Soda&lsquo;, edging out &lsquo;Pop&rsquo; as the country&rsquo;s overall most popular term for the drink category, is the dominant term in the Northeastern US, California, Eastern Wisconsin, and an isolated area around St. Louis.  It holds a slim majority in parts of Florida around Orlando and Miami.  
+			</p>
+		</div>
+		<div class="guide" id="guide_coke">
+			<h4>Coke</h4>
+			<p>
+				Coca-Cola was originally manufactured in Atlanta, Georgia, which may explain its dominance as generic soft-drink term across the South.  
+			</p>
+		</div>
+		<div class="guide" id="guide_other">
+			<h4>Other</h4>
+			<p>
+				Less common names for carbonated beverages include &lsquo;soft drink&rsquo;, &lsquo;tonic&rsquo;, and &lsquo;soda pop&rsquo;
+			</p>
+		</div>
+		<div class="guide" id="guide_none">
+			<h4>No Majority</h4>
+			<p>
+				In some cases there is no clear majority term.  These &lsquo;battleground&rsquo; counties typically lie on the borders between regions.  North Carolina, situated between the largest soda and coke regions, has no clear winner across the state.  
+			</p>
+		</div>
+		<div class="guide" id="guide_null">
+			<h4>Insufficient Data</h4>
+			<p>
+				Counties with fewer than 5 survey respondents were not colored.  
+			</p>
+		</div>
+	</div>
+	
+	<div id="sources">
+		<p>
+			Sources: </br>
+			Inspired by <a href="http://www.popvssoda.com/countystats/total-county.html">this map</a> by Matthew T. Campbell. </br>
+			Map code from <a href="http://bl.ocks.org/4060606">Mike Bostock</a></br>
+			Data courtesy of Alan McConchie, <a href="http://popvssoda.com">PopVsSoda.com</a></br>
+			<a href="http://bigthink.com/strange-maps/308-the-pop-vs-soda-map">Frank Jacobs: &ldquo;The Pop Vs. Soda Map&rdquo;</a></br>
+			<a href="http://eng.sagepub.com/content/24/4/270.full.pdf">Luanne von Schneidemesser, Journal of English Linguistics (&ldquo;Soda or Pop?&rdquo;, #24, 1996)</a>
+		</p>
 	</div>
 	<script type="text/javascript" src="map.js"></script>
 

@@ -27,16 +27,16 @@ var tooltip = d3.select("body")
 	.style("visibility", "hidden");	
 
 var tooltip_title=tooltip.append("div")
-	.text("county")
+	.text("County")
 
 
 //Add tooltip svg and bar chart
 var tw = 100,
 	th = 100,
-	number_height=15
-	bh = th - number_height
+	number_height = 15,
+	bh = th - number_height,
 	pad = 4,
-	bw = (tw-pad)/4 - pad;
+	bw = (tw-3*pad)/4;
 	
 barchart = tooltip.append("div").append("svg")
 	.attr("width", tw)
@@ -50,15 +50,15 @@ for (var i = 0; i < 4; i++) {
 	.attr("class","bar");
 	
 	bars[i].append("rect")
-	.style("fill",color(drink_names[i]))
-	.attr("x",pad + pad*i + bw*i)
+	.attr("class",drink_names[i])
+	.attr("x",pad*i + bw*i)
 	.attr("width", bw)	
 	.attr("y",th)
 	.attr("height",0);
 	
 	bars[i].append("text")
 	  .text(0)
-	  .attr("x",pad + pad*i + bw*i + bw/2)
+	  .attr("x",pad*i + bw*i + bw/2)
 	  .attr("y",th - 5)
 }
 
@@ -93,7 +93,7 @@ function ready(error, us, pvscounty_fips) {
     .selectAll("path")
       .data(topojson.object(us, us.objects.counties).geometries)
     .enter().append("path")
-		.style("fill", function(d) { return color(typeById[d.id]); })
+		.attr("class", function(d) { return typeById[d.id]; })
 		.attr("d", path);
 
   svg.append("path")
@@ -125,10 +125,10 @@ function ready(error, us, pvscounty_fips) {
 		
 		//Add line to indicate majority
 		barchart.append("svg:line")
-		.attr("x1",pad)
-		.attr("x2",tw - pad)
-		.attr("y1",number_height+0.5*bh)
-		.attr("y2",number_height+0.5*bh)
+		.attr("x1",0)
+		.attr("x2",tw)
+		.attr("y1",th - 0.5*bh)
+		.attr("y2",th - 0.5*bh)
 		.style("stroke","grey")
 		.style("opacity",0.75);
 	})
@@ -170,8 +170,8 @@ function ready(error, us, pvscounty_fips) {
       .attr("x", lx + 6)
       .attr("width", 18)
       .attr("height", 18)
-	  .data(color.domain())
-      .style("fill", function(d) {return(color(d)); });
+	  .data(drink_names)
+      .attr("class", function(d) {return(d); });
 
   legend_item.append("text")
       .attr("x", lx)
@@ -187,13 +187,27 @@ function ready(error, us, pvscounty_fips) {
 			.style("display","none");
 		d3.select("#guide_"+d)
 			.style("display","block");
+			
+		var selected_class = d3.select(this).attr("class");
+		d3.selectAll(".counties").selectAll("." + selected_class)
+			.attr("class","unselected");
 	})
+  
   .on('mouseout', function(d){
-		d3.select(this).style('stroke','');
+		//restore unselected classes to original colors
+		var selected_class = d3.select(this).style('stroke','')
+		.attr("class");
+		d3.selectAll(".counties").selectAll(".unselected")
+			.attr("class",  selected_class);
+			
+		//change guide back to overall
 		d3.selectAll(".guide")
 			.style("display","none");
 		d3.select("#guide_overall")
 			.style("display","block")});
+
+			
+
 }
 
 

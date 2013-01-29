@@ -1,6 +1,7 @@
-var width = 960,
+var width = 980,
     height = 500;
 var drink_names = new Array("pop","soda","coke","other","none","null")
+var min_respondents = 5
 
 var path = d3.geo.path();
 	
@@ -10,7 +11,7 @@ var svg = d3.select("body").append("svg")
 
 var color = d3.scale.ordinal()
 	.domain(drink_names)
-    .range(["green","blue","red","purple","lightgrey","grey"]);	
+    .range(["green","rgb(60,100,255)","#FF3333","purple","#994C00","grey"]);	
 	
 queue()
     .defer(d3.json, "us.json")
@@ -27,15 +28,16 @@ var tooltip = d3.select("body")
 	.style("visibility", "hidden");	
 
 var tooltip_title=tooltip.append("div")
-	.text("county")
+	.text("County")
 
 
 //Add tooltip svg and bar chart
 var tw = 100,
 	th = 100,
-	bh = th - 15
+	number_height = 15,
+	bh = th - number_height,
 	pad = 4,
-	bw = (tw-pad)/4 - pad;
+	bw = (tw-3*pad)/4;
 	
 barchart = tooltip.append("div").append("svg")
 	.attr("width", tw)
@@ -49,26 +51,55 @@ for (var i = 0; i < 4; i++) {
 	.attr("class","bar");
 	
 	bars[i].append("rect")
-	.style("fill",color(drink_names[i]))
-	.attr("x",pad + pad*i + bw*i)
+	.attr("class",drink_names[i])
+	.attr("x",pad*i + bw*i)
 	.attr("width", bw)	
 	.attr("y",th)
 	.attr("height",0);
 	
 	bars[i].append("text")
 	  .text(0)
-	  .attr("x",pad + pad*i + bw*i + bw/2)
+	  .attr("x",pad*i + bw*i + bw/2)
 	  .attr("y",th - 5)
 }
 
+var lattitude = d3.scale.linear()
+	.domain([0,51])
+	.range([879,0]);
+var longitude = d3.scale.linear()
+	.domain([0,122.8])
+	.range([2186,0])
+
+//Display soda cities
+function displayCities(x,y,text){
+	//var x = longitude(coordlong),
+	//    y = lattitude(lat);
+	var dot = svg.append('g')
+		.attr("class","city");
+	console.log(x,y);
+	dot.append('svg:circle')
+		.attr('cx',x)
+		.attr('cy',y)
+		.attr('r',3);
+	dot.append("text")
+		.text(text)
+		.attr('x', x + 10)
+		.attr('y', y + 4);
+}
+
 	
-//Build the map and legend	
+//Draw the map and legend	
 function ready(error, us, pvscounty_fips) {
   var data=topojson.object(us, us.objects.counties).geometries
   var typeById = {};
   var countyName = {};
   var pct = [{},{},{},{}];
-  var num = [{},{},{},{}];
+  var num = [{},{},{},{},{}];
+  
+  //Hide the loading signal
+  d3.select("#Loading")
+	.style("display","none")
+  
   
   pvscounty_fips.forEach(function(d) {
 	typeById[d.id] = d.majority;
@@ -81,52 +112,34 @@ function ready(error, us, pvscounty_fips) {
 	num[1][d.id] = d.SUMSODA;
 	num[2][d.id] = d.SUMCOKE;
 	num[3][d.id] = d.SUMOTHER;
+	num[4][d.id] = d.SUMCOUNT;
   });
+  
 
+ //draw and color counties
   svg.append("g")
       .attr("class", "counties")
     .selectAll("path")
-      .data(topojson.object(us, us.objects.counties).geometries)
+      .data(data)
     .enter().append("path")
-		.style("fill", function(d) { return color(typeById[d.id]); })
-		.attr("d", path);
-
+		.attr("d", path)
+		.attr("class", function(d) {
+			if(num[4][d.id] < min_respondents){
+				return "null";
+			} else {
+				return typeById[d.id];
+			}
+		});
+ //add state outlines
   svg.append("path")
       .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a.id !== b.id; }))
       .attr("class", "states")
       .attr("d", path);
 
-
-/***************
- *   Info      *
- *   ***********/
-
-
-
-var guide = svg.append("g")
-	  .attr("class","guide");
-
-	  
-/*
-guide.append("text")
-		.attr("x", .9*width)
-		.attr("y", .5*height)
-        .attr("dy", ".35em")
-        .style("text-anchor", "end")
-	    .text("test text")
-guide.append("svg:line")
-	  	.attr("x1",.9*width)
-		.attr("x2",.5*width)
-		.attr("y1",.3*height)
-		.attr("y2",.9*height)
-		.style("stroke","grey")
-		.style("opacity",0.75);
-*/	
-
   
-/*******************
- *Mouseover actions*
- *******************/
+	/*******************
+	 *Mouseover actions*
+	 *******************/
   //Highlight county on mouseover
   var county = svg.select("g").selectAll("path")
   
@@ -147,10 +160,10 @@ guide.append("svg:line")
 		
 		//Add line to indicate majority
 		barchart.append("svg:line")
-		.attr("x1",pad)
-		.attr("x2",tw - pad)
-		.attr("y1",0.5*th)
-		.attr("y2",0.5*th)
+		.attr("x1",0)
+		.attr("x2",tw)
+		.attr("y1",th - 0.5*bh)
+		.attr("y2",th - 0.5*bh)
 		.style("stroke","grey")
 		.style("opacity",0.75);
 	})
@@ -174,26 +187,26 @@ guide.append("svg:line")
 	
 	
 	
-/*******************
- **** Legend *******
- *******************/
+	/*******************
+	 **** Legend *******
+	 *******************/
   var ly = 100,
-	  lx = width - 50;
+	  lx = width - 60;
 	  
   var legend = svg.append("g")
 	.attr("class", "legend");
 	
   var legend_item=legend.selectAll("legend_item")
-		.data(["Pop", "Soda", "Coke", "Other", "No Majority", "No Data"])
+		.data(["Pop", "Soda", "Coke", "Other", "No Majority", "Insufficient Data"])
 		.enter().append("g")
-		.attr("transform", function(d, i) { return "translate(0," + (ly + i * 20) + ")"; });
+		.attr("transform", function(d, i) { return "translate(25," + (ly + i * 20) + ")"; });
   
   legend_item.append("rect")
       .attr("x", lx + 6)
       .attr("width", 18)
       .attr("height", 18)
-	  .data(color.range())
-      .style("fill", function(d) {return(d); });
+	  .data(drink_names)
+      .attr("class", function(d) {return(d); });
 
   legend_item.append("text")
       .attr("x", lx)
@@ -202,8 +215,59 @@ guide.append("svg:line")
       .style("text-anchor", "end")
       .text(function(d) { return d; });
 
-  legend_item.selectAll("rect").on('mouseover',function(){
-	d3.select(this).style('stroke','yellow');});
+	   
+ 
+  //Legend Mouseovers
+  legend_item.selectAll("rect")
+  .on('mouseover',function(d){
+	
+	//only display the hovered type
+	var selected_class = d3.select(this).attr("class");
+  	d3.selectAll(".counties").selectAll("path")
+		.classed("unselected",true);
+	d3.selectAll(".counties").selectAll("." + selected_class)
+		.classed("unselected",false);
+	if(selected_class == "soda"){
+		displayCities(582,233,"St. Louis");
+		displayCities(758,440,"Miami");
+		displayCities(737,394,"Orlando");
+		//displayCities(38,90,"St. Louis");
+		//displayCities(25.7,80.2,"Miami");
+	} else if(selected_class == "coke"){
+		displayCities(676,310,"Atlanta")
+	}
+
+	//apply yellow stroke to legend and display type-specific guide
+	d3.select(this).style('stroke','yellow');
+	d3.selectAll(".guide")
+		.style("display","none");
+	d3.select("#guide_"+d)
+		.style("display","block");
+  })
+  
+  .on('mouseout', function(d){
+	
+	//restore all colors
+	var selected_class = d3.select(this).attr("class");
+	d3.selectAll(".counties").selectAll(".unselected")
+		.classed("unselected",  false);
+		
+	//remove yellow stroke and resume overall guide
+	d3.select(this).style('stroke','')
+	d3.selectAll(".guide")
+		.style("display","none");
+	d3.select("#guide_overall")
+		.style("display","block")
+	d3.selectAll(".city").remove()
+  })
+
+	//Map fading effects
+	//legend_item.selectAll("rect")
+	//.on('mouseover',function(){
+
+				
+		//change guide back to overall
+	//.on('mouseout',function(d){
 }
 
 
