@@ -1,0 +1,201 @@
+{ "name":"root","children":[{ "name":"2012-12-12 (7)", "class":"parent","children": [
+	{ "name":"Spend (7)"	, "class":"Spend","children": [
+		{ "name":"amount (1)"		, "class":"Spend","children": [
+			{ "name":"4325L33LSB (1)"			, "class":"Spend","children": [
+				{ "name":"1.85->2.99 (1)"				, "class":"Spend","size": 1,"pcl": 6				}]
+			}]
+		},		{ "name":"status (5)"		, "class":"Spend","children": [
+			{ "name":"4325L32_ATM6 (1)"			, "class":"Spend","children": [
+				{ "name":"Active->Inactive (1)"				, "class":"Spend","size": 1,"pcl": 10				}]
+			},			{ "name":"4325L33AVGCL_C (1)"			, "class":"Spend","children": [
+				{ "name":"Inactive->Active (1)"				, "class":"Spend","size": 1,"pcl": 10				}]
+			},			{ "name":"4325L33AVGCL_E (1)"			, "class":"Spend","children": [
+				{ "name":"Inactive->Active (1)"				, "class":"Spend","size": 1,"pcl": 10				}]
+			},			{ "name":"4325L33CLUST_D (1)"			, "class":"Spend","children": [
+				{ "name":"Inactive->Active (1)"				, "class":"Spend","size": 1,"pcl": 10				}]
+			},			{ "name":"4325L33LSB (1)"			, "class":"Spend","children": [
+				{ "name":"Inactive->Active (1)"				, "class":"Spend","size": 1,"pcl": 10				}]
+			}]
+		},		{ "name":"targetDelay (1)"		, "class":"Spend","children": [
+			{ "name":"4325L33LSB (1)"			, "class":"Spend","children": [
+				{ "name":"6 hours->5 hours (1)"				, "class":"Spend","size": 1,"pcl": 6				}]
+			}]
+		}]
+	}]
+},{ "name":"2012-12-13 (3)", "class":"parent","children": [
+	{ "name":"Spend (3)"	, "class":"Spend","children": [
+		{ "name":"status (3)"		, "class":"Spend","children": [
+			{ "name":"4325L32_ATM6 (1)"			, "class":"Spend","children": [
+				{ "name":"Inactive->Active (1)"				, "class":"Spend","size": 1,"pcl": 6				}]
+			},			{ "name":"4325L33CLUST_C (1)"			, "class":"Spend","children": [
+				{ "name":"Inactive->Active (1)"				, "class":"Spend","size": 1,"pcl": 6				}]
+			},			{ "name":"4325L99LSA (1)"			, "class":"Spend","children": [
+				{ "name":"Inactive->Active (1)"				, "class":"Spend","size": 1,"pcl": 6				}]
+			}]
+		}]
+	}]
+},{ "name":"2012-12-14 (37)", "class":"parent","children": [
+	{ "name":"PaceCredit (11)"	, "class":"PaceCredit","children": [
+		{ "name":"pacingLimit (11)"		, "class":"PaceCredit","children": [
+			{ "name":"4325L31AVGCL_D (1)"			, "class":"PaceCredit","children": [
+				{ "name":"25000.0->45000.0 (1)"				, "class":"PaceCredit","size": 1,"pcl": 16				}]
+			},			{ "name":"4325L31AVGCL_G (1)"			, "class":"PaceCredit","children": [
+				{ "name":"100000.0->150000.0 (1)"				, "class":"PaceCredit","size": 1,"pcl": 16				}]
+			},			{ "name":"4325L31AVGCL_H (1)"			, "class":"PaceCredit","children": [
+				{ "name":"100000.0->150000.0 (1)"				, "class":"PaceCredit","size": 1,"pcl": 16				}]
+			},			{ "name":"4325L31AVGCL_I (1)"			, "class":"PaceCredit","children": [
+				{ "name":"100000.0->150000.0 (1)"				, "class":"PaceCredit","size": 1,"pcl": 16				}]
+			},			{ "name":"4325L31LSI (1)"			, "class":"PaceCredit","children": [
+				{ "name":"100000.0->150000.0 (1)"				, "class":"PaceCredit","size": 1,"pcl": 16				}]
+			},			{ "name":"4325L32_ATM6 (1)"			, "class":"PaceCredit","children": [
+				{ "name":"20000.0->50000.0 (1)"				, "class":"PaceCredit","size": 1,"pcl": 16				}]
+			},			{ "name":"4325L33AVGCL_H (1)"			, "class":"PaceCredit","children": [
+				{ "name":"20000.0->50000.0 (1)"				, "class":"PaceCredit","size": 1,"pcl": 16				}]
+			},			{ "name":"4325L33AVGCL_J (1)"			, "class":"PaceCredit","children": [
+				{ "name":"10000.0->40000.0 (1)"				, "class":"PaceCredit","size": 1,"pcl": 16				}]
+			},			{ "name":"4325L33CLUST_D (1)"			, "class":"PaceCredit","children": [
+				{ "name":"10000.0->15000.0 (1)"				, "class":"PaceCredit","size": 1,"pcl": 16				}]
+			},			{ "name":"4325L33LSB (1)"			, "class":"PaceCredit","children": [
+				{ "name":"10000.0->40000.0 (1)"				, "class":"PaceCredit","size": 1,"pcl": 16				}]
+			},			{ "name":"4325L99LSB (1)"			, "class":"PaceCredit","children": [
+				{ "name":"25000.0->45000.0 (1)"				, "class":"PaceCredit","size": 1,"pcl": 16				}]
+			}]
+		}]
+	},	{ "name":"RevenueModelExt (3)"	, "class":"RevenueModelExt","children": [
+		{ "name":"billedBudget (1)"		, "class":"RevenueModelExt","children": [
+			{ "name":"2012 Price Rewind CITI-CIT-134-40-NYC (1)"			, "class":"RevenueModelExt","children": [
+				{ "name":"87909.79->87612.32 (1)"				, "class":"RevenueModelExt","size": 1,"pcl": 7				}]
+			}]
+		},		{ "name":"plannedBudget (2)"		, "class":"RevenueModelExt","children": [
+			{ "name":"2012 Price Rewind CITI-CIT-134-40-NYC (2)"			, "class":"RevenueModelExt","children": [
+				{ "name":"187090.21->187387.68 (1)"				, "class":"RevenueModelExt","size": 1,"pcl": 8				},				{ "name":"87909.79->87612.32 (1)"				, "class":"RevenueModelExt","size": 1,"pcl": 8				}]
+			}]
+		}]
+	},	{ "name":"Spend (23)"	, "class":"Spend","children": [
+		{ "name":"amount (7)"		, "class":"Spend","children": [
+			{ "name":"4325L31AVGCL_D (1)"			, "class":"Spend","children": [
+				{ "name":"1.59->1.89 (1)"				, "class":"Spend","size": 1,"pcl": 14				}]
+			},			{ "name":"4325L31AVGCL_G (1)"			, "class":"Spend","children": [
+				{ "name":"1.89->2.89 (1)"				, "class":"Spend","size": 1,"pcl": 14				}]
+			},			{ "name":"4325L31AVGCL_H (1)"			, "class":"Spend","children": [
+				{ "name":"1.89->3.89 (1)"				, "class":"Spend","size": 1,"pcl": 14				}]
+			},			{ "name":"4325L31AVGCL_I (1)"			, "class":"Spend","children": [
+				{ "name":"1.89->3.89 (1)"				, "class":"Spend","size": 1,"pcl": 14				}]
+			},			{ "name":"4325L31LSI (1)"			, "class":"Spend","children": [
+				{ "name":"1.85->2.85 (1)"				, "class":"Spend","size": 1,"pcl": 14				}]
+			},			{ "name":"4325L33CLUST_D (1)"			, "class":"Spend","children": [
+				{ "name":"1.59->2.59 (1)"				, "class":"Spend","size": 1,"pcl": 14				}]
+			},			{ "name":"4325L99LSB (1)"			, "class":"Spend","children": [
+				{ "name":"1.79->2.79 (1)"				, "class":"Spend","size": 1,"pcl": 14				}]
+			}]
+		},		{ "name":"status (6)"		, "class":"Spend","children": [
+			{ "name":"2551L79OLBA (1)"			, "class":"Spend","children": [
+				{ "name":"Active->Inactive (1)"				, "class":"Spend","size": 1,"pcl": 13				}]
+			},			{ "name":"4325L31LSA (1)"			, "class":"Spend","children": [
+				{ "name":"Inactive->Active (1)"				, "class":"Spend","size": 1,"pcl": 13				}]
+			},			{ "name":"4325L33AVGCL_C (1)"			, "class":"Spend","children": [
+				{ "name":"Active->Inactive (1)"				, "class":"Spend","size": 1,"pcl": 13				}]
+			},			{ "name":"4325L33AVGCL_E (1)"			, "class":"Spend","children": [
+				{ "name":"Active->Inactive (1)"				, "class":"Spend","size": 1,"pcl": 13				}]
+			},			{ "name":"4325L33CLUST_C (1)"			, "class":"Spend","children": [
+				{ "name":"Active->Inactive (1)"				, "class":"Spend","size": 1,"pcl": 13				}]
+			},			{ "name":"4325L33LSA (1)"			, "class":"Spend","children": [
+				{ "name":"Inactive->Active (1)"				, "class":"Spend","size": 1,"pcl": 13				}]
+			}]
+		},		{ "name":"targetDelay (10)"		, "class":"Spend","children": [
+			{ "name":"4325L31AVGCL_D (1)"			, "class":"Spend","children": [
+				{ "name":"5 hours->4 hours (1)"				, "class":"Spend","size": 1,"pcl": 17				}]
+			},			{ "name":"4325L31AVGCL_G (1)"			, "class":"Spend","children": [
+				{ "name":"5 hours->3 hours (1)"				, "class":"Spend","size": 1,"pcl": 17				}]
+			},			{ "name":"4325L31AVGCL_H (1)"			, "class":"Spend","children": [
+				{ "name":"5 hours->3 hours (1)"				, "class":"Spend","size": 1,"pcl": 17				}]
+			},			{ "name":"4325L31AVGCL_I (1)"			, "class":"Spend","children": [
+				{ "name":"5 hours->3 hours (1)"				, "class":"Spend","size": 1,"pcl": 17				}]
+			},			{ "name":"4325L31LSI (1)"			, "class":"Spend","children": [
+				{ "name":"4 hours->3 hours (1)"				, "class":"Spend","size": 1,"pcl": 17				}]
+			},			{ "name":"4325L33AVGCL_H (1)"			, "class":"Spend","children": [
+				{ "name":"6 hours->4 hours (1)"				, "class":"Spend","size": 1,"pcl": 17				}]
+			},			{ "name":"4325L33AVGCL_J (1)"			, "class":"Spend","children": [
+				{ "name":"6 hours->5 hours (1)"				, "class":"Spend","size": 1,"pcl": 17				}]
+			},			{ "name":"4325L33CLUST_D (1)"			, "class":"Spend","children": [
+				{ "name":"6 hours->3 hours (1)"				, "class":"Spend","size": 1,"pcl": 17				}]
+			},			{ "name":"4325L33LSB (1)"			, "class":"Spend","children": [
+				{ "name":"5 hours->4 hours (1)"				, "class":"Spend","size": 1,"pcl": 17				}]
+			},			{ "name":"4325L99LSB (1)"			, "class":"Spend","children": [
+				{ "name":"4 hours->3 hours (1)"				, "class":"Spend","size": 1,"pcl": 17				}]
+			}]
+		}]
+	}]
+},{ "name":"2012-12-17 (30)", "class":"parent","children": [
+	{ "name":"PaceCredit (8)"	, "class":"PaceCredit","children": [
+		{ "name":"pacingLimit (8)"		, "class":"PaceCredit","children": [
+			{ "name":"4325L31AVGCL_A (1)"			, "class":"PaceCredit","children": [
+				{ "name":"20000.0->40000.0 (1)"				, "class":"PaceCredit","size": 1,"pcl": 12				}]
+			},			{ "name":"4325L31AVGCL_C (1)"			, "class":"PaceCredit","children": [
+				{ "name":"30000.0->50000.0 (1)"				, "class":"PaceCredit","size": 1,"pcl": 12				}]
+			},			{ "name":"4325L31AVGCL_H (1)"			, "class":"PaceCredit","children": [
+				{ "name":"150000.0->170000.0 (1)"				, "class":"PaceCredit","size": 1,"pcl": 12				}]
+			},			{ "name":"4325L31AVGCL_I (1)"			, "class":"PaceCredit","children": [
+				{ "name":"150000.0->160000.0 (1)"				, "class":"PaceCredit","size": 1,"pcl": 12				}]
+			},			{ "name":"4325L31AVGCL_J (1)"			, "class":"PaceCredit","children": [
+				{ "name":"75000.0->170000.0 (1)"				, "class":"PaceCredit","size": 1,"pcl": 12				}]
+			},			{ "name":"4325L31LSE (1)"			, "class":"PaceCredit","children": [
+				{ "name":"50000.0->70000.0 (1)"				, "class":"PaceCredit","size": 1,"pcl": 12				}]
+			},			{ "name":"4325L32AT (1)"			, "class":"PaceCredit","children": [
+				{ "name":"150000.0->100000.0 (1)"				, "class":"PaceCredit","size": 1,"pcl": 12				}]
+			},			{ "name":"4325L32AVGCL_J (1)"			, "class":"PaceCredit","children": [
+				{ "name":"75000.0->85000.0 (1)"				, "class":"PaceCredit","size": 1,"pcl": 12				}]
+			}]
+		}]
+	},	{ "name":"Spend (22)"	, "class":"Spend","children": [
+		{ "name":"amount (9)"		, "class":"Spend","children": [
+			{ "name":"4325L31AVGCL_A (1)"			, "class":"Spend","children": [
+				{ "name":"1.59->2.03 (1)"				, "class":"Spend","size": 1,"pcl": 14				}]
+			},			{ "name":"4325L31AVGCL_C (1)"			, "class":"Spend","children": [
+				{ "name":"1.59->1.99 (1)"				, "class":"Spend","size": 1,"pcl": 14				}]
+			},			{ "name":"4325L31AVGCL_F (1)"			, "class":"Spend","children": [
+				{ "name":"1.89->1.99 (1)"				, "class":"Spend","size": 1,"pcl": 14				}]
+			},			{ "name":"4325L31AVGCL_I (1)"			, "class":"Spend","children": [
+				{ "name":"3.89->3.99 (1)"				, "class":"Spend","size": 1,"pcl": 14				}]
+			},			{ "name":"4325L31AVGCL_J (2)"			, "class":"Spend","children": [
+				{ "name":"1.59->1.99 (1)"				, "class":"Spend","size": 1,"pcl": 15				},				{ "name":"1.99->2.99 (1)"				, "class":"Spend","size": 1,"pcl": 15				}]
+			},			{ "name":"4325L31LSE (1)"			, "class":"Spend","children": [
+				{ "name":"1.85->2.85 (1)"				, "class":"Spend","size": 1,"pcl": 14				}]
+			},			{ "name":"4325L32AT (1)"			, "class":"Spend","children": [
+				{ "name":"3.99->5.99 (1)"				, "class":"Spend","size": 1,"pcl": 14				}]
+			},			{ "name":"4325L32AVGCL_J (1)"			, "class":"Spend","children": [
+				{ "name":"1.59->2.59 (1)"				, "class":"Spend","size": 1,"pcl": 14				}]
+			}]
+		},		{ "name":"status (5)"		, "class":"Spend","children": [
+			{ "name":"4325L31LSA (1)"			, "class":"Spend","children": [
+				{ "name":"Active->Inactive (1)"				, "class":"Spend","size": 1,"pcl": 11				}]
+			},			{ "name":"4325L32LSJ (1)"			, "class":"Spend","children": [
+				{ "name":"Active->Inactive (1)"				, "class":"Spend","size": 1,"pcl": 11				}]
+			},			{ "name":"4325L33AVGCL_J (1)"			, "class":"Spend","children": [
+				{ "name":"Active->Inactive (1)"				, "class":"Spend","size": 1,"pcl": 11				}]
+			},			{ "name":"4325L33LSA (1)"			, "class":"Spend","children": [
+				{ "name":"Active->Inactive (1)"				, "class":"Spend","size": 1,"pcl": 11				}]
+			},			{ "name":"4325L33LSB (1)"			, "class":"Spend","children": [
+				{ "name":"Active->Inactive (1)"				, "class":"Spend","size": 1,"pcl": 11				}]
+			}]
+		},		{ "name":"targetDelay (8)"		, "class":"Spend","children": [
+			{ "name":"4325L31AVGCL_A (1)"			, "class":"Spend","children": [
+				{ "name":"5 hours->4 hours (1)"				, "class":"Spend","size": 1,"pcl": 14				}]
+			},			{ "name":"4325L31AVGCL_C (1)"			, "class":"Spend","children": [
+				{ "name":"5 hours->4 hours (1)"				, "class":"Spend","size": 1,"pcl": 14				}]
+			},			{ "name":"4325L31AVGCL_F (1)"			, "class":"Spend","children": [
+				{ "name":"5 hours->4 hours (1)"				, "class":"Spend","size": 1,"pcl": 14				}]
+			},			{ "name":"4325L31AVGCL_I (1)"			, "class":"Spend","children": [
+				{ "name":"3 hours->2 hours (1)"				, "class":"Spend","size": 1,"pcl": 14				}]
+			},			{ "name":"4325L31AVGCL_J (1)"			, "class":"Spend","children": [
+				{ "name":"5 hours->4 hours (1)"				, "class":"Spend","size": 1,"pcl": 14				}]
+			},			{ "name":"4325L31LSE (1)"			, "class":"Spend","children": [
+				{ "name":"4 hours->3 hours (1)"				, "class":"Spend","size": 1,"pcl": 14				}]
+			},			{ "name":"4325L32AT (1)"			, "class":"Spend","children": [
+				{ "name":"1 hours->30 minutes (1)"				, "class":"Spend","size": 1,"pcl": 14				}]
+			},			{ "name":"4325L32AVGCL_J (1)"			, "class":"Spend","children": [
+				{ "name":"5 hours->4 hours (1)"				, "class":"Spend","size": 1,"pcl": 14				}]
+			}]
+		}]
+	}]
+}]}
